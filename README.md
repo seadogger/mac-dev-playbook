@@ -12,7 +12,7 @@ This is a work in progress, and is mostly a means for me to document my current 
   - [Battleschool](http://spencer.gibb.us/blog/2014/02/03/introducing-battleschool)
   - [osxc](https://github.com/osxc)
   - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
-  - [Nilesh Gule's Technical Blog]https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html (Visual Studio Code Extensions Installer task)
+  - [Nilesh Gule's Technical Blog](https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html) (Visual Studio Code Extensions Installer task)
 
 ## Installation
 
