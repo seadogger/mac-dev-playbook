@@ -1,14 +1,14 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: yes
-configure_sudoers: yes
-configure_terminal: yes
-configure_osx: yes
+configure_dotfiles: no
+configure_sudoers: no
+configure_terminal: no
+configure_osx: no
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: https://github.com/seadogger/dotfiles.git
 dotfiles_repo_accept_hostkey: yes
-dotfiles_repo_local_destination: ~/Dropbox/Development/GitHub/dotfiles
+dotfiles_repo_local_destination: ~/dotfiles
 dotfiles_files:
   - .zshrc
   - .gitignore
@@ -43,30 +43,38 @@ homebrew_installed_packages:
   - pv
   - wget
   - wrk
+  - mas
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-drivers
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - chromedriver
   - docker
-  - dropbox
   - firefox
   - google-chrome
-  - handbrake
-  - licecap
-  - macvim
   - sequel-pro
-  - skitch
-  - slack
   - sublime-text
-  - transmit
   - vagrant
+  - visual-studio-code
+  - tigervnc-viewer
+  - makemkv
+  - plex-media-player
+  - sketchup
+ # - ubiquiti-unifi-controller
+  - cleanmymac
+  - java
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
+mas_installed_apps:
+  - { id: 425264550, name: "Disk Speed Test (3.2)" }
+  - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
+  - { id: 905384638, name: "FileBot.launcher (4.8.5)" }
+  - { id: 462054704, name: "Microsoft Word (16.32)" }
+  - { id: 462062816, name: "Microsoft PowerPoint (16.32)" }
+  - { id: 462058435, name: "Microsoft Excel (16.32)" }
 mas_email: ""
 mas_password: ""
 
