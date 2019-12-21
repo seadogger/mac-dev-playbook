@@ -58,6 +58,10 @@ You can override any of the defaults configured in `default.config.yml` by creat
     npm_packages:
       - name: webpack
     
+    visual_studio_code_extensions:
+      - extensioName: githistory
+        publisher: donjayamanne
+    
     pip_packages:
       - name: mkdocs
 

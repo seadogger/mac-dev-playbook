@@ -104,5 +104,21 @@ pip_packages: []
   #   state: present # present/absent/latest, default: present
   #   version: "0.16.3" # default: N/A
 
+visual_studio_code_extensions:
+#  - extensionName: autoimport
+#    publisher: steoates
+#  - extensionName: vscode-docker
+#    publisher: PeterJausovec
+#  - extensionName: csharp
+#    publisher: ms-vscode
+#  - extensionName: file-icons
+#    publisher: file-icons
+  - extensionName: githistory
+    publisher: donjayamanne
+#  - extensionName: vscode-auto-open-markdown-preview
+#    publisher: hnw
+#  - extensionName: docker-explorer
+#    publisher: formulahendry
+
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
