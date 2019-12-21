@@ -12,6 +12,7 @@ This is a work in progress, and is mostly a means for me to document my current 
   - [Battleschool](http://spencer.gibb.us/blog/2014/02/03/introducing-battleschool)
   - [osxc](https://github.com/osxc)
   - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
+  - [Nilesh Gule's Technical Blog]https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html (Visual Studio Code Extensions Installer task)
 
 ## Installation
 
@@ -75,7 +76,6 @@ Applications (installed with Homebrew Cask):
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Google Chrome](https://www.google.com/chrome/)
   - [Sequel Pro](https://www.sequelpro.com/) (MySQL client)
-  - [Sublime Text](https://www.sublimetext.com/)
   - [Vagrant](https://www.vagrantup.com/)
   - [Visual Studio Code](https://code.visualstudio.com)
   - [Tiger VNC Viewer](https://tigervnc.org)
@@ -119,6 +119,9 @@ Packages (installed with Homebrew):
   - packer
   - terraform
 
+Visual Studio Code Extensions
+
+  - githistory
 
 My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
@@ -130,10 +133,9 @@ Finally, there are a few other preferences and settings added on for various app
 
 It's my hope that I can get the rest of these things wrapped up into Ansible playbooks soon, but for now, these steps need to be completed manually (assuming you already have Xcode and Ansible installed, and have run this playbook).
 
-  1. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
-  2. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
-  3. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
-  4. Set the fileBot default format string for video file conversion
+  1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
+  2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
+  3. Set the fileBot default format string for video file conversion
 
 ## Testing the Playbook
 
