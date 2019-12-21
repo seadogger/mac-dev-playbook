@@ -1,10 +1,10 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: no
-configure_sudoers: no
-configure_terminal: no
-configure_osx: no
+configure_dotfiles: yes
+configure_sudoers: yes
+configure_terminal: yes
+configure_osx: yes
 
 dotfiles_repo: https://github.com/seadogger/dotfiles.git
 dotfiles_repo_accept_hostkey: yes
@@ -37,13 +37,14 @@ homebrew_installed_packages:
   - nvm
   - php
   - ssh-copy-id
-  - cowsay
   - readline
   - openssl
   - pv
   - wget
   - wrk
   - mas
+  - packer
+  - terraform
 
 homebrew_taps:
   - homebrew/core
@@ -63,9 +64,11 @@ homebrew_cask_apps:
   - makemkv
   - plex-media-player
   - sketchup
- # - ubiquiti-unifi-controller
+#  - ubiquiti-unifi-controller  # Did not want to uninstall to get this working.
   - cleanmymac
   - java
+#  - 8bitdo-firmware-updater
+#  - canon-pixma-scanner-driver-ica
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
