@@ -3,7 +3,7 @@
 This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup.
 
 *See also*:
-  - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
+  - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
   - [osxc](https://github.com/osxc)
   - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
   - [Nilesh Gule's Technical Blog](https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html) (Visual Studio Code Extensions Installer task)
