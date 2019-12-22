@@ -32,3 +32,11 @@
     user_install: no
     executable: "{{ item.executable | default(omit) }}"
   with_items: "{{ gem_packages }}"
+
+- name: Install VS extensions
+  shell: "code --install-extension {{ item.publisher }}.{{ item.extensionName }}"
+  become: no
+  register: vscode_result
+  changed_when: "'already installed' not in vscode_result.stdout"
+  with_items: "{{ visual_studio_code_extensions }}"
+  
