@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/mac-dev-playbook.svg?branch=master)](https://travis-ci.org/geerlingguy/mac-dev-playbook)
 
-This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
+This playbook installs and configures my Mac for general use and software development.
 
 This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
 
@@ -127,19 +127,13 @@ My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the
 
 Finally, there are a few other preferences and settings added on for various apps and services.
 
-## Future additions
-
-### Things that still need to be done manually
-
-It's my hope that I can get the rest of these things wrapped up into Ansible playbooks soon, but for now, these steps need to be completed manually (assuming you already have Xcode and Ansible installed, and have run this playbook).
+## Still Done Manually
 
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
   3. Set the fileBot default format string for video file conversion
 
 ## Testing the Playbook
-
-Many people have asked me if I often wipe my entire workstation and start from scratch just to test changes to the playbook. Nope! Instead, I posted instructions for how I build a [Mac OS X VirtualBox VM](https://github.com/geerlingguy/mac-osx-virtualbox-vm), on which I can continually run and re-run this playbook to test changes and make sure things work correctly.
 
 Additionally, this project is [continuously tested on Travis CI's macOS infrastructure](https://travis-ci.org/geerlingguy/mac-dev-playbook).
 
@@ -149,4 +143,4 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 
 ## Author
 
-[Jeff Geerling](https://www.jeffgeerling.com/), 2014 (originally inspired by [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks)).
+Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/)[Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
