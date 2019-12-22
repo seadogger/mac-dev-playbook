@@ -1,15 +1,9 @@
 # Mac Development Ansible Playbook
 
-[![Build Status](https://travis-ci.org/geerlingguy/mac-dev-playbook.svg?branch=master)](https://travis-ci.org/geerlingguy/mac-dev-playbook)
-
-This playbook installs and configures my Mac for general use and software development.
-
-This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
+This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup.
 
 *See also*:
-
-  - [Boxen](https://github.com/boxen)
-  - [Battleschool](http://spencer.gibb.us/blog/2014/02/03/introducing-battleschool)
+  - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
   - [osxc](https://github.com/osxc)
   - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
   - [Nilesh Gule's Technical Blog](https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html) (Visual Studio Code Extensions Installer task)
@@ -127,15 +121,11 @@ My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the
 
 Finally, there are a few other preferences and settings added on for various apps and services.
 
-## Still Done Manually
+## Manual Stuff TODO
 
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
   3. Set the fileBot default format string for video file conversion
-
-## Testing the Playbook
-
-Additionally, this project is [continuously tested on Travis CI's macOS infrastructure](https://travis-ci.org/geerlingguy/mac-dev-playbook).
 
 ## Ansible for DevOps
 
@@ -143,4 +133,4 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 
 ## Author
 
-Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/)[Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
+Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
