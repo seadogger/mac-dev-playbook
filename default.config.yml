@@ -50,6 +50,7 @@ homebrew_taps:
   - homebrew/core
   - homebrew/cask
   - homebrew/cask-drivers
+  - homebrew/cask-versions
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -66,9 +67,10 @@ homebrew_cask_apps:
 #  - ubiquiti-unifi-controller  # Did not want to uninstall to get this working.
   - cleanmymac
   - java
-#  - 8bitdo-firmware-updater
-#  - canon-pixma-scanner-driver-ica
+  - 8bitdo-firmware-updater
+  - canon-pixma-scanner-driver-ica
   - drawio
+  - openemu-experimental
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
