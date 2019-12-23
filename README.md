@@ -115,7 +115,16 @@ Packages (installed with Homebrew):
   - packer
   - terraform
 
-Visual Studio Code Extensions
+Mac App Store Installed Apps:
+
+  - [Disk Speed Test](https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12)
+  - [PhotoSweeper](https://apps.apple.com/us/app/photosweeper/id463362050?mt=12)
+  - [FileBot](https://apps.apple.com/us/app/filebot/id905384638?mt=12)
+  - [Microsoft Word](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
+  - [Microsoft PowerPoint](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
+  - [Microsoft Excel](https://apps.apple.com/us/app/microsoft-excel/id462058435?mt=12)
+
+Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
 
   - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) by Eric Amodio
   - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) by Mikael Olenfalk
