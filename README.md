@@ -1,6 +1,6 @@
 # Mac Development Ansible Playbook
 
-This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup.
+This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup and learn anisible.
 
 *See also*:
   - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
