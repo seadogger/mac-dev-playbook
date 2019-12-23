@@ -1,6 +1,6 @@
 # Mac Development Ansible Playbook
 
-This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup and learn anisible.
+This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup and learn Ansible.
 
 *See also*:
   - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
@@ -82,6 +82,8 @@ Applications (installed with Homebrew Cask):
   - [8bitdo Firmware Updater](https://www.8bitdo.com)
   - [Canon Pixma Scanner Driver](https://global.canon/en/)
   - [Drawio](https://www.draw.io)
+  - [OpenEMU](http://openemu.org)
+  - [Arduino IDE](https://www.arduino.cc/en/main/software)
 
 Packages (installed with Homebrew):
 
@@ -115,7 +117,13 @@ Packages (installed with Homebrew):
 
 Visual Studio Code Extensions
 
-  - githistory
+  - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) by Eric Amodio
+  - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) by Mikael Olenfalk
+  - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) by CoenraadS
+  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) by Microsoft
+  - [Ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible) by Microsoft
+  - [Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino) by Microsoft
+  - [Cpp/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) by Microsoft
 
 My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
