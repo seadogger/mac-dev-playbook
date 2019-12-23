@@ -124,6 +124,7 @@ Visual Studio Code Extensions
   - [Ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible) by Microsoft
   - [Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino) by Microsoft
   - [Cpp/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) by Microsoft
+  - [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) (Theme)
 
 My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 

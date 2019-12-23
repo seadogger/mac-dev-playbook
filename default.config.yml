@@ -121,6 +121,8 @@ visual_studio_code_extensions:
     publisher: vsciot-vscode
   - extensionName: cpptools
     publisher: ms-vscode
+  - extensionName: theme-dracula
+    publisher: dracula-theme
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
