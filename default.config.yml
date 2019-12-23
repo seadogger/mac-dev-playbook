@@ -71,6 +71,7 @@ homebrew_cask_apps:
   - canon-pixma-scanner-driver-ica
   - drawio
   - openemu-experimental
+  - arduino
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -106,20 +107,20 @@ pip_packages: []
   #   version: "0.16.3" # default: N/A
 
 visual_studio_code_extensions:
-#  - extensionName: autoimport
-#    publisher: steoates
-#  - extensionName: vscode-docker
-#    publisher: PeterJausovec
-#  - extensionName: csharp
-#    publisher: ms-vscode
-#  - extensionName: file-icons
-#    publisher: file-icons
-  - extensionName: githistory
-    publisher: donjayamanne
-#  - extensionName: vscode-auto-open-markdown-preview
-#    publisher: hnw
-#  - extensionName: docker-explorer
-#    publisher: formulahendry
+  - extensionName: gitlens
+    publisher: eamodio
+  - extensionName: terraform
+    publisher: mauve
+  - extensionName: bracket-pair-colorizer
+    publisher: coenraads
+  - extensionName: python
+    publisher: ms-python
+  - extensionName: vscode-ansible
+    publisher: vscoss
+  - extensionName: vscode-arduino
+    publisher: vsciot-vscode
+  - extensionName: cpptools
+    publisher: ms-vscode
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
