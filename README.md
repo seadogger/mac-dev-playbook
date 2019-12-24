@@ -84,6 +84,7 @@ Applications (installed with Homebrew Cask):
   - [Drawio](https://www.draw.io)
   - [OpenEMU](http://openemu.org)
   - [Arduino IDE](https://www.arduino.cc/en/main/software)
+  - Virtual Box
 
 Packages (installed with Homebrew):
 
