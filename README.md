@@ -84,7 +84,8 @@ Applications (installed with Homebrew Cask):
   - [Drawio](https://www.draw.io)
   - [OpenEMU](http://openemu.org)
   - [Arduino IDE](https://www.arduino.cc/en/main/software)
-  - Virtual Box
+  - [Virtual Box](https://www.virtualbox.org)
+  - [Stellarium](https://stellarium.org)
 
 Packages (installed with Homebrew):
 
@@ -124,6 +125,7 @@ Mac App Store Installed Apps:
   - [Microsoft Word](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
   - [Microsoft PowerPoint](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
   - [Microsoft Excel](https://apps.apple.com/us/app/microsoft-excel/id462058435?mt=12)
+  - [SkySafari 6 Plus](https://apps.apple.com/app/skysafari-6-plus/id1262647300)
 
 Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
 
