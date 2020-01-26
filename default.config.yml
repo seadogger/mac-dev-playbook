@@ -45,6 +45,7 @@ homebrew_installed_packages:
   - mas
   - packer
   - terraform
+  - awscli
 
 homebrew_taps:
   - homebrew/core
@@ -68,12 +69,16 @@ homebrew_cask_apps:
   - cleanmymac
   - java
   - 8bitdo-firmware-updater
-  - canon-pixma-scanner-driver-ica
+#  - canon-pixma-scanner-driver-ica
   - drawio
   - openemu-experimental
   - arduino
   - virtualbox
   - stellarium
+  - kstars
+#  - canon-eos-utility
+  - balenaetcher
+
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:

@@ -147,6 +147,7 @@ Finally, there are a few other preferences and settings added on for various app
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
   3. Set the fileBot default format string for video file conversion
+  4. Install Stellarmate/Ekos
 
 ## Ansible for DevOps
 
