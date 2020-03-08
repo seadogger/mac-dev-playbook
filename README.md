@@ -149,7 +149,6 @@ Finally, there are a few other preferences and settings added on for various app
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
   3. Set the fileBot default format string for video file conversion
   5. Install PixInsight
-  6. Install Duet
 
 ## Ansible for DevOps
 
