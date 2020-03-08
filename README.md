@@ -157,3 +157,63 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 ## Author
 
 Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
+
+
+## Troubleshooting
+
+Dock Crashes and contiunes to try and restart.
+
+Run the following command:
+
+    rm ~/Library/Application\ Support/Dock/desktoppicture.db
+
+Process:               Dock [32541]
+Path:                  /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+Identifier:            com.apple.dock
+Version:               1.8 (2044.6.1)
+Build Info:            Dock-2044006001000000~61
+Code Type:             X86-64 (Native)
+Parent Process:        ??? [1]
+Responsible:           Dock [32541]
+User ID:               501
+
+Date/Time:             2020-03-08 12:08:51.511 -0400
+OS Version:            Mac OS X 10.15.3 (19D76)
+Report Version:        12
+Anonymous UUID:        3E6E01AE-21A0-A32C-0B36-BC750009B8CB
+
+
+Time Awake Since Boot: 36000 seconds
+
+System Integrity Protection: enabled
+
+Crashed Thread:        0  Dispatch queue: com.apple.main-thread
+
+Exception Type:        EXC_CRASH (SIGABRT)
+Exception Codes:       0x0000000000000000, 0x0000000000000000
+Exception Note:        EXC_CORPSE_NOTIFY
+
+Application Specific Information:
+dyld3 mode
+*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString unsignedIntValue]: unrecognized selector sent to instance 0x6000032d1040'
+terminating with uncaught exception of type NSException
+abort() called
+
+Application Specific Backtrace 1:
+0   CoreFoundation                      0x00007fff3a29238b __exceptionPreprocess + 250
+1   libobjc.A.dylib                     0x00007fff70470552 objc_exception_throw + 48
+2   CoreFoundation                      0x00007fff3a3117f0 -[NSObject(NSObject) __retain_OA] + 0
+3   CoreFoundation                      0x00007fff3a1f69f4 ___forwarding___ + 1427
+4   CoreFoundation                      0x00007fff3a1f63d8 _CF_forwarding_prep_0 + 120
+5   Dock                                0x0000000101517115 Dock + 49429
+6   Dock                                0x0000000101516c84 Dock + 48260
+7   Dock                                0x0000000101516786 Dock + 46982
+8   Dock                                0x0000000101514222 Dock + 37410
+9   Dock                                0x0000000101512c5f Dock + 31839
+10  Dock                                0x0000000101670a55 Dock + 1464917
+11  Dock                                0x000000010167150e Dock + 1467662
+12  libswiftObjectiveC.dylib            0x00007fff7147bf0e $s10ObjectiveC15autoreleasepool8invokingxxyKXE_tKlF + 46
+13  Dock                                0x0000000101510fc7 Dock + 24519
+14  libdyld.dylib                       0x00007fff717d27fd start + 1
+
+
