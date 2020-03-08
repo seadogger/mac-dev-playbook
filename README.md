@@ -86,6 +86,7 @@ Applications (installed with Homebrew Cask):
   - [Arduino IDE](https://www.arduino.cc/en/main/software)
   - [Virtual Box](https://www.virtualbox.org)
   - [Stellarium](https://stellarium.org)
+  - [Duet](https://www.duetdisplay.com)
 
 Packages (installed with Homebrew):
 
@@ -147,7 +148,8 @@ Finally, there are a few other preferences and settings added on for various app
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
   3. Set the fileBot default format string for video file conversion
-  4. Install Stellarmate/Ekos
+  5. Install PixInsight
+  6. Install Duet
 
 ## Ansible for DevOps
 

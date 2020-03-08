@@ -78,6 +78,7 @@ homebrew_cask_apps:
   - kstars
 #  - canon-eos-utility
   - balenaetcher
+  - duet
 
 
 # See `geerlingguy.mas` role documentation for usage instructions.
