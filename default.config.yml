@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - packer
   - terraform
   - awscli
+  - libftdi
 
 homebrew_taps:
   - homebrew/core
@@ -61,22 +62,19 @@ homebrew_cask_apps:
   - sequel-pro
   - vagrant
   - visual-studio-code
+  - microsoft-office-2016
   - tigervnc-viewer
   - makemkv
   - plex-media-player
   - sketchup
-#  - ubiquiti-unifi-controller  # Did not want to uninstall to get this working.
   - cleanmymac
   - java
   - 8bitdo-firmware-updater
-#  - canon-pixma-scanner-driver-ica
   - drawio
   - openemu-experimental
   - arduino
   - virtualbox
-  - stellarium
   - kstars
-#  - canon-eos-utility
   - balenaetcher
   - duet
 
@@ -86,10 +84,6 @@ mas_installed_apps:
   - { id: 425264550, name: "Disk Speed Test (3.2)" }
   - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
   - { id: 905384638, name: "FileBot.launcher (4.8.5)" }
-  - { id: 462054704, name: "Microsoft Word (16.32)" }
-  - { id: 462062816, name: "Microsoft PowerPoint (16.32)" }
-  - { id: 462058435, name: "Microsoft Excel (16.32)" }
-  - { id: 1362059169, name: "SkySafari 6 Plus (6.4.0)" }
 mas_email: ""
 mas_password: ""
 
@@ -110,10 +104,10 @@ npm_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages: []
-  # - name: mkdocs
-  #   state: present # present/absent/latest, default: present
-  #   version: "0.16.3" # default: N/A
+pip_packages:
+  - name: tasmotizer
+    state: latest
+    executable: pip3
 
 visual_studio_code_extensions:
   - extensionName: gitlens
@@ -132,6 +126,8 @@ visual_studio_code_extensions:
     publisher: ms-vscode
   - extensionName: theme-dracula
     publisher: dracula-theme
+  - extensionName: platformio-ide
+    publisher: platformio
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

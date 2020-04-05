@@ -62,9 +62,9 @@ You can override any of the defaults configured in `default.config.yml` by creat
 
 Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
 
-## Included Applications / Configuration (Default)
+## Default Applications and Configuration to Install
 
-Applications (installed with Homebrew Cask):
+### Applications (installed with Homebrew Cask):
 
   - [Docker](https://www.docker.com/)
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
@@ -72,23 +72,23 @@ Applications (installed with Homebrew Cask):
   - [Sequel Pro](https://www.sequelpro.com/) (MySQL client)
   - [Vagrant](https://www.vagrantup.com/)
   - [Visual Studio Code](https://code.visualstudio.com)
+  - [Microsoft Office 2016](https://products.office.com/en-us/mac/microsoft-office-for-mac)
   - [Tiger VNC Viewer](https://tigervnc.org)
   - [Makemkv](https://makemkv.com)
   - [Plex Media Player](https://www.plex.tv)
   - [Sketchup](https://www.sketchup.com)
-  - [Ubiquiti Unifi Controller](https://unifi-network.ui.com)
-  - [CleanMyMac X](https://macpaw.com)
+  - [CleanMyMac X](https://macpaw.com) Will be removed in Sept 2020
   - [Java](https://www.java.com/en/)
   - [8bitdo Firmware Updater](https://www.8bitdo.com)
-  - [Canon Pixma Scanner Driver](https://global.canon/en/)
   - [Drawio](https://www.draw.io)
   - [OpenEMU](http://openemu.org)
   - [Arduino IDE](https://www.arduino.cc/en/main/software)
   - [Virtual Box](https://www.virtualbox.org)
-  - [Stellarium](https://stellarium.org)
+  - [Kstars](https://edu.kde.org/kstars/)
+  - [balenaEtcher](https://www.balena.io/etcher/)
   - [Duet](https://www.duetdisplay.com)
 
-Packages (installed with Homebrew):
+### Packages (installed with Homebrew):
 
   - autoconf
   - bash-completion
@@ -117,18 +117,19 @@ Packages (installed with Homebrew):
   - mas
   - packer
   - terraform
+  - awscli
+  - libftdi
 
-Mac App Store Installed Apps:
+### Pip Installed Packages:
+  - [Tasmotizer](https://github.com/tasmota/tasmotizer) 
+
+### Mac App Store Installed Apps:
 
   - [Disk Speed Test](https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12)
   - [PhotoSweeper](https://apps.apple.com/us/app/photosweeper/id463362050?mt=12)
   - [FileBot](https://apps.apple.com/us/app/filebot/id905384638?mt=12)
-  - [Microsoft Word](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
-  - [Microsoft PowerPoint](https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12)
-  - [Microsoft Excel](https://apps.apple.com/us/app/microsoft-excel/id462058435?mt=12)
-  - [SkySafari 6 Plus](https://apps.apple.com/app/skysafari-6-plus/id1262647300)
 
-Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
+### Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
 
   - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) by Eric Amodio
   - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) by Mikael Olenfalk
@@ -138,6 +139,7 @@ Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Ca
   - [Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino) by Microsoft
   - [Cpp/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) by Microsoft
   - [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) (Theme)
+  - [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) by PlatformIO
 
 My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
@@ -147,8 +149,8 @@ Finally, there are a few other preferences and settings added on for various app
 
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
-  3. Set the fileBot default format string for video file conversion
-  5. Install PixInsight
+  3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
+  4. Install PixInsight
 
 ## Ansible for DevOps
 
@@ -159,61 +161,61 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
 
 
+
 ## Troubleshooting
 
-Dock Crashes and contiunes to try and restart.
+### Dock Crashes and Continously tries to restart
 
-Run the following command:
+#### System Console Error
+    Process:               Dock [32541]
+    Path:                  /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+    Identifier:            com.apple.dock
+    Version:               1.8 (2044.6.1)
+    Build Info:            Dock-2044006001000000~61
+    Code Type:             X86-64 (Native)
+    Parent Process:        ??? [1]
+    Responsible:           Dock [32541]
+    User ID:               501
+
+    Date/Time:             2020-03-08 12:08:51.511 -0400
+    OS Version:            Mac OS X 10.15.3 (19D76)
+    Report Version:        12
+    Anonymous UUID:        3E6E01AE-21A0-A32C-0B36-BC750009B8CB
+
+#### System Console Error Log Details 
+    Time Awake Since Boot: 36000 seconds
+
+    System Integrity Protection: enabled
+
+    Crashed Thread:        0  Dispatch queue: com.apple.main-thread
+
+    Exception Type:        EXC_CRASH (SIGABRT)
+    Exception Codes:       0x0000000000000000, 0x0000000000000000
+    Exception Note:        EXC_CORPSE_NOTIFY
+
+    Application Specific Information:
+    dyld3 mode
+    *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString unsignedIntValue]: unrecognized selector sent to instance 0x6000032d1040' terminating with uncaught exception of type NSException abort() called
+
+    Application Specific Backtrace 1:
+    0   CoreFoundation                      0x00007fff3a29238b __exceptionPreprocess + 250
+    1   libobjc.A.dylib                     0x00007fff70470552 objc_exception_throw + 48
+    2   CoreFoundation                      0x00007fff3a3117f0 -[NSObject(NSObject) __retain_OA] + 0
+    3   CoreFoundation                      0x00007fff3a1f69f4 ___forwarding___ + 1427
+    4   CoreFoundation                      0x00007fff3a1f63d8 _CF_forwarding_prep_0 + 120
+    5   Dock                                0x0000000101517115 Dock + 49429
+    6   Dock                                0x0000000101516c84 Dock + 48260
+    7   Dock                                0x0000000101516786 Dock + 46982
+    8   Dock                                0x0000000101514222 Dock + 37410
+    9   Dock                                0x0000000101512c5f Dock + 31839
+    10  Dock                                0x0000000101670a55 Dock + 1464917
+    11  Dock                                0x000000010167150e Dock + 1467662
+    12  libswiftObjectiveC.dylib            0x00007fff7147bf0e$s10ObjectiveC15autoreleasepool8invokingxxyKXE_tKlF + 46
+    13  Dock                                0x0000000101510fc7 Dock + 24519
+    14  libdyld.dylib                       0x00007fff717d27fd start + 1
+
+#### Corrective Action
+Run the following command in a terminal window
 
     rm ~/Library/Application\ Support/Dock/desktoppicture.db
-
-Process:               Dock [32541]
-Path:                  /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
-Identifier:            com.apple.dock
-Version:               1.8 (2044.6.1)
-Build Info:            Dock-2044006001000000~61
-Code Type:             X86-64 (Native)
-Parent Process:        ??? [1]
-Responsible:           Dock [32541]
-User ID:               501
-
-Date/Time:             2020-03-08 12:08:51.511 -0400
-OS Version:            Mac OS X 10.15.3 (19D76)
-Report Version:        12
-Anonymous UUID:        3E6E01AE-21A0-A32C-0B36-BC750009B8CB
-
-
-Time Awake Since Boot: 36000 seconds
-
-System Integrity Protection: enabled
-
-Crashed Thread:        0  Dispatch queue: com.apple.main-thread
-
-Exception Type:        EXC_CRASH (SIGABRT)
-Exception Codes:       0x0000000000000000, 0x0000000000000000
-Exception Note:        EXC_CORPSE_NOTIFY
-
-Application Specific Information:
-dyld3 mode
-*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString unsignedIntValue]: unrecognized selector sent to instance 0x6000032d1040'
-terminating with uncaught exception of type NSException
-abort() called
-
-Application Specific Backtrace 1:
-0   CoreFoundation                      0x00007fff3a29238b __exceptionPreprocess + 250
-1   libobjc.A.dylib                     0x00007fff70470552 objc_exception_throw + 48
-2   CoreFoundation                      0x00007fff3a3117f0 -[NSObject(NSObject) __retain_OA] + 0
-3   CoreFoundation                      0x00007fff3a1f69f4 ___forwarding___ + 1427
-4   CoreFoundation                      0x00007fff3a1f63d8 _CF_forwarding_prep_0 + 120
-5   Dock                                0x0000000101517115 Dock + 49429
-6   Dock                                0x0000000101516c84 Dock + 48260
-7   Dock                                0x0000000101516786 Dock + 46982
-8   Dock                                0x0000000101514222 Dock + 37410
-9   Dock                                0x0000000101512c5f Dock + 31839
-10  Dock                                0x0000000101670a55 Dock + 1464917
-11  Dock                                0x000000010167150e Dock + 1467662
-12  libswiftObjectiveC.dylib            0x00007fff7147bf0e $s10ObjectiveC15autoreleasepool8invokingxxyKXE_tKlF + 46
-13  Dock                                0x0000000101510fc7 Dock + 24519
-14  libdyld.dylib                       0x00007fff717d27fd start + 1
-
 
