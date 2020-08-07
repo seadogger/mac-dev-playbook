@@ -51,6 +51,7 @@ homebrew_installed_packages:
   - netpbm
   - numpy
   - pyenv
+  - balena-cli
 
 homebrew_taps:
   - homebrew/core
@@ -83,6 +84,7 @@ homebrew_cask_apps:
   - duet
   - vlc
   - blender
+  - wireshark
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
