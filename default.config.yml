@@ -87,6 +87,9 @@ homebrew_cask_apps:
   - blender
   - wireshark
   - prusaslicer
+  - geekbench
+  - freecad
+  - bitcoin-core
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -126,7 +129,7 @@ visual_studio_code_extensions:
   - extensionName: gitlens
     publisher: eamodio
   - extensionName: terraform
-    publisher: mauve
+    publisher: hashicorp
   - extensionName: bracket-pair-colorizer
     publisher: coenraads
   - extensionName: python

@@ -148,9 +148,10 @@ Finally, there are a few other preferences and settings added on for various app
 ## Manual Stuff TODO
 
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
-  2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, CleanMyMacX, Plex
+  2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, Plex
   3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
   4. Install PixInsight
+  5. Install DUCCS 
 
 ## Ansible for DevOps
 
