@@ -52,6 +52,7 @@ homebrew_installed_packages:
   - numpy
   - pyenv
   - balena-cli
+  - azure-cli
 
 homebrew_taps:
   - homebrew/core
@@ -72,7 +73,6 @@ homebrew_cask_apps:
   - makemkv
   - plex-media-player
   - sketchup
- # - cleanmymac
   - java
   - 8bitdo-firmware-updater
   - drawio
@@ -82,12 +82,10 @@ homebrew_cask_apps:
   - virtualbox-extension-pack
   - kstars
   - balenaetcher
-  - duet
   - vlc
   - blender
   - wireshark
   - prusaslicer
-  - geekbench
   - freecad
   - bitcoin-core
 
