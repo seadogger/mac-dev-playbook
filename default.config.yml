@@ -1,4 +1,4 @@
--:--
+---
 downloads: ~/.ansible-downloads/
 
 configure_dotfiles: yes
@@ -28,7 +28,7 @@ homebrew_installed_packages:
   - gpg
   - hub
   - httpie
-  - iperf
+  #- iperf
   - libevent
   - sqlite
   - mcrypt
@@ -41,9 +41,9 @@ homebrew_installed_packages:
   - openssl
   - pv
   - wget
-  - wrk
+  #- wrk
   - mas
-  - packer
+  #- packer
   - terraform
   - awscli
   - libftdi
@@ -70,10 +70,10 @@ homebrew_cask_apps:
   - visual-studio-code
 #  - microsoft-office-2016
   - tigervnc-viewer
-  - makemkv
+ # - makemkv
   - plex-media-player
   - sketchup
-  - java
+ # - java
   - 8bitdo-firmware-updater
   - drawio
   - openemu-experimental
