@@ -10,8 +10,8 @@
     state: directory
   become: true
 
-- name: Symlink /usr/local/etc/ansible to /etc/ansible.
-  file:
-    src: /etc/ansible
-    path: /usr/local/etc/ansible
-    state: link
+#- name: Symlink /usr/local/etc/ansible to /etc/ansible.
+#  file:
+#    src: /etc/ansible
+#    path: /usr/local/etc/ansible
+#    state: link

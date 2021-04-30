@@ -1,10 +1,16 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: yes
-configure_sudoers: no
-configure_terminal: yes
-configure_osx: yes
+configure_dotfiles: true
+configure_terminal: true
+configure_osx: true
+
+configure_sudoers: false
+sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
 
 dotfiles_repo: https://github.com/seadogger/dotfiles.git
 dotfiles_repo_accept_hostkey: yes
@@ -51,8 +57,9 @@ homebrew_installed_packages:
   - netpbm
   - numpy
   - pyenv
-  - balena-cli
+  #- balena-cli
   - azure-cli
+  - zsh-history-substring-search
 
 homebrew_taps:
   - homebrew/core
@@ -65,6 +72,7 @@ homebrew_cask_apps:
   - docker
   - firefox
   - google-chrome
+  - handbrake
   - sequel-pro
   - vagrant
   - visual-studio-code
@@ -88,15 +96,16 @@ homebrew_cask_apps:
   - prusaslicer
   - freecad
   - bitcoin-core
+  - beyond-compare
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps:
-  - { id: 425264550, name: "Disk Speed Test (3.2)" }
-  - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
-  - { id: 905384638, name: "FileBot.launcher (4.8.5)" }
+#mas_installed_apps:
+ # - { id: 425264550, name: "Disk Speed Test (3.2)" }
+ # - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
+ # - { id: 905384638, name: "FileBot.launcher (4.8.5)" }
   #TODO REMOTE DESKTOP
-mas_email: ""
-mas_password: ""
+#mas_email: ""
+#mas_password: ""
 
 osx_script: "~/.osx --no-restart"
 
@@ -115,33 +124,33 @@ npm_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages:
-  - name: tasmotizer
-    state: latest
-    executable: pip3
-  - name: pyfits
-    state: latest
-    executable: pip3
+pip_packages: []
+#  - name: tasmotizer
+#    state: latest
+#    executable: pip3
+  #- name: pyfits
+  #  state: latest
+  #  executable: pip3
 
-visual_studio_code_extensions:
-  - extensionName: gitlens
-    publisher: eamodio
-  - extensionName: terraform
-    publisher: hashicorp
-  - extensionName: bracket-pair-colorizer
-    publisher: coenraads
-  - extensionName: python
-    publisher: ms-python
-  - extensionName: vscode-ansible
-    publisher: vscoss
-  - extensionName: vscode-arduino
-    publisher: vsciot-vscode
-  - extensionName: cpptools
-    publisher: ms-vscode
-  - extensionName: theme-dracula
-    publisher: dracula-theme
-  - extensionName: platformio-ide
-    publisher: platformio
+visual_studio_code_extensions: []
+#  - extensionName: gitlens
+#    publisher: eamodio
+#  - extensionName: terraform
+#    publisher: hashicorp
+#  - extensionName: bracket-pair-colorizer
+#    publisher: coenraads
+#  - extensionName: python
+#    publisher: ms-python
+#  - extensionName: vscode-ansible
+#    publisher: vscoss
+#  - extensionName: vscode-arduino
+#    publisher: vsciot-vscode
+#  - extensionName: cpptools
+#    publisher: ms-vscode
+#  - extensionName: theme-dracula
+#    publisher: dracula-theme
+#  - extensionName: platformio-ide
+#    publisher: platformio
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
