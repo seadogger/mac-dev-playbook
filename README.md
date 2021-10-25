@@ -155,6 +155,7 @@ Finally, there are a few other preferences and settings added on for various app
   3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
   4. Install PixInsight
   5. Install DUCCS 
+  6. Install Handbdrake version 1.4+ for native M1 support
 
 ## Ansible for DevOps
 
@@ -167,6 +168,14 @@ Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Ma
 
 
 ## Troubleshooting
+
+### Visual Studio Code Plugins not working
+open Visual Studio Code
+
+Open the Command Palette via (⇧⌘P) and type shell command to find the Shell Command:
+
+Install 'code' command in PATH** command.
+
 
 ### Dock Crashes and Continously tries to restart
 
