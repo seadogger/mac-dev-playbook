@@ -99,17 +99,19 @@ homebrew_cask_apps:
   #- freecad
   - bitcoin-core
   - beyond-compare
-  #- microsoft-edge
-  #- xlights
   #- roblox
   - xquartz
+  - steam
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
- # - { id: 425264550, name: "Disk Speed Test (3.2)" }
- # - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
- # - { id: 905384638, name: "FileBot.launcher (4.8.5)" }
- # - TODO REMOTE DESKTOP
+mas_installed_apps: 
+  - { id: 905384638, name: "FileBot (4.9.4)" }
+  - { id: 425264550, name: "Disk Speed Test (3.2)" }
+  - { id: 463362050, name: "PhotoSweeper (3.5.0)" }
+  - { id: 1137297689, name: "xLights (2021.29.2)" }
+  - { id: 409183694, name: "Keynote (11.1)" }
+  - { id: 1451685025, name: "WireGuard (1.0.15)" }
+  - { id: 409203825, name: "Numbers (11.1)" }
 mas_email: ""
 mas_password: ""
 
