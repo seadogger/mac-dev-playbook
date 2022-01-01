@@ -21,6 +21,8 @@ This playbook installs and configures my Mac for general use and software develo
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
+> Note: On M1 Macs homebrew is installed in /opt/homebrew and all homebrew apps installed are located in /opt/homebrew/bin which is not in the default $PATH variable.  This needs to be added to the $PATH to find these installated applications
+
 ### Running a specific set of tagged tasks
 
 You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages` and `osx`.
@@ -94,6 +96,7 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
   - [BitCoin-Core](https://bitcoin.org/en/bitcoin-core/)
   - [Beyond Compare](https://www.scootersoftware.com)
   - [xQuartz](https://www.xquartz.org)
+  - [Steam](https://store.steampowered.com)
 
 ### Packages (installed with Homebrew):
 
@@ -140,6 +143,11 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
   - [Disk Speed Test](https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12)
   - [PhotoSweeper](https://apps.apple.com/us/app/photosweeper/id463362050?mt=12)
   - [FileBot](https://apps.apple.com/us/app/filebot/id905384638?mt=12)
+  - [xLights](https://apps.apple.com/us/app/xlights-tools/id1562578750)
+  - [Keynote](https://www.apple.com/keynote/)
+  - [Numbers](https://www.apple.com/numbers/)
+  - [WireGuard](https://apps.apple.com/id/app/wireguard/id1441195209?l=id)
+  - [StellarMate](https://apps.apple.com/id/app/stellarmate/id1252626058)  Not currently working
 
 ### Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
 
@@ -164,11 +172,8 @@ Finally, there are a few other preferences and settings added on for various app
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, Plex
   3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
   4. Install PixInsight (Need to down load)
-  5. Install Wireguard (App store)
-  6. Install xLights (App Store)
-  7. Install Wireguard (As of 1/1/2022 looks like this is supported by Homebrew)
-  8. install tunnels for Wireguard using the QR codes from Wireguard Server
-  9. Install StellarMate (App store)
+  5. install tunnels for Wireguard using the QR codes from Wireguard Server
+  6. Install StellarMate (App store)
 
 ## Ansible for DevOps
 

@@ -112,6 +112,7 @@ mas_installed_apps:
   - { id: 409183694, name: "Keynote (11.1)" }
   - { id: 1451685025, name: "WireGuard (1.0.15)" }
   - { id: 409203825, name: "Numbers (11.1)" }
+  #- { id: 1252626058, name: "StellarMate 2.4.3"}  Not currently working from app store (iPad App)
 mas_email: ""
 mas_password: ""
 
