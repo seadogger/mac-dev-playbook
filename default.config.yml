@@ -49,19 +49,19 @@ homebrew_installed_packages:
   - wget
   #- wrk
   - mas
-  #- packer
+  - packer
   - terraform
   - awscli
   - libftdi
-  - astrometry-net
+  #- astrometry-net
   - netpbm
   - numpy
   - pyenv
   #- balena-cli
-  - azure-cli
   - zsh-history-substring-search
   - scipy
   #- matplotlib
+  - iperf3
 
 homebrew_taps:
   - homebrew/core
@@ -74,11 +74,11 @@ homebrew_cask_apps:
   - docker
   - firefox
   - google-chrome
-  #- handbrake
+  - handbrake
   - sequel-pro
   - vagrant
   - visual-studio-code
-  #- microsoft-office-2016
+  - microsoft-office
   - tigervnc-viewer
   - makemkv
   - plex-media-player
@@ -90,17 +90,17 @@ homebrew_cask_apps:
   - arduino
   - virtualbox
   - virtualbox-extension-pack
-  - kstars
+  #- kstars
   - balenaetcher
   - vlc
-  - blender
+  #- blender
   - wireshark
   - prusaslicer
-  - freecad
+  #- freecad
   - bitcoin-core
   - beyond-compare
-  - microsoft-edge
-  - xlights
+  #- microsoft-edge
+  #- xlights
   #- roblox
   - xquartz
 
@@ -130,28 +130,21 @@ npm_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages: 
+pip_packages: []
   #- name: tasmotizer
   #  state: latest
   #  executable: pip3
   #- name: pyfits
   #  state: latest
   #  executable: pip3
-  - name: jupyter
-    state: latest
-    executable: pip3
 
 visual_studio_code_extensions: 
   - extensionName: gitlens
     publisher: eamodio
   - extensionName: terraform
     publisher: hashicorp
-  - extensionName: bracket-pair-colorizer
-    publisher: coenraads
   - extensionName: python
     publisher: ms-python
-  - extensionName: vscode-ansible
-    publisher: vscoss
   - extensionName: vscode-arduino
     publisher: vsciot-vscode
   - extensionName: cpptools
@@ -160,6 +153,12 @@ visual_studio_code_extensions:
     publisher: dracula-theme
   - extensionName: platformio-ide
     publisher: platformio
+  - extensionName: vscode-docker
+    publisher: ms-azuretools
+  - extensionName: vscode-pylance
+    publisher: ms-python
+  - extensionName: python
+    publisher: ms-python
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

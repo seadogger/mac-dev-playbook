@@ -72,24 +72,28 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
   - [Docker](https://www.docker.com/)
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Google Chrome](https://www.google.com/chrome/)
-  - [Sequel Pro](https://www.sequelpro.com/) (MySQL client)
+  - [Handbrake](https://handbrake.fr)
+  - [Sequel Pro](https://www.sequelpro.com/)
   - [Vagrant](https://www.vagrantup.com/)
   - [Visual Studio Code](https://code.visualstudio.com)
-  - [Microsoft Office 2016](https://products.office.com/en-us/mac/microsoft-office-for-mac)
+  - [Microsoft Office](https://products.office.com/en-us/mac/microsoft-office-for-mac)
   - [Tiger VNC Viewer](https://tigervnc.org)
   - [Makemkv](https://makemkv.com)
   - [Plex Media Player](https://www.plex.tv)
   - [Sketchup](https://www.sketchup.com)
-  - [CleanMyMac X](https://macpaw.com) Will be removed in Sept 2020
   - [Java](https://www.java.com/en/)
   - [8bitdo Firmware Updater](https://www.8bitdo.com)
   - [Drawio](https://www.draw.io)
   - [OpenEMU](http://openemu.org)
   - [Arduino IDE](https://www.arduino.cc/en/main/software)
   - [Virtual Box](https://www.virtualbox.org)
-  - [Kstars](https://edu.kde.org/kstars/)
   - [balenaEtcher](https://www.balena.io/etcher/)
-  - [Duet](https://www.duetdisplay.com)
+  - [VLC](https://www.videolan.org)
+  - [Wireshark](https://www.wireshark.org)
+  - [PrusaSlicer](https://www.prusa3d.com/page/prusaslicer_424/)
+  - [BitCoin-Core](https://bitcoin.org/en/bitcoin-core/)
+  - [Beyond Compare](https://www.scootersoftware.com)
+  - [xQuartz](https://www.xquartz.org)
 
 ### Packages (installed with Homebrew):
 
@@ -116,15 +120,20 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
   - openssl
   - pv
   - wget
-  - wrk
   - mas
   - packer
   - terraform
   - awscli
   - libftdi
+  - netpbm
+  - numpy
+  - pyenv
+  - zsh-history-substring-search
+  - scipy
+  - iperf3
+
 
 ### Pip Installed Packages:
-  - [Tasmotizer](https://github.com/tasmota/tasmotizer) 
 
 ### Mac App Store Installed Apps:
 
@@ -136,13 +145,14 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
 
   - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) by Eric Amodio
   - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) by Mikael Olenfalk
-  - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) by CoenraadS
   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) by Microsoft
-  - [Ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible) by Microsoft
   - [Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino) by Microsoft
   - [Cpp/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) by Microsoft
   - [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) (Theme)
   - [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) by PlatformIO
+  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+  - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 
 My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
@@ -153,9 +163,12 @@ Finally, there are a few other preferences and settings added on for various app
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
   2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, Plex
   3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
-  4. Install PixInsight
-  5. Install DUCCS 
-  6. Install Handbdrake version 1.4+ for native M1 support
+  4. Install PixInsight (Need to down load)
+  5. Install Wireguard (App store)
+  6. Install xLights (App Store)
+  7. Install Wireguard (As of 1/1/2022 looks like this is supported by Homebrew)
+  8. install tunnels for Wireguard using the QR codes from Wireguard Server
+  9. Install StellarMate (App store)
 
 ## Ansible for DevOps
 
@@ -164,7 +177,6 @@ Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
 ## Author
 
 Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
-
 
 
 ## Troubleshooting
