@@ -62,6 +62,9 @@ homebrew_installed_packages:
   - scipy
   #- matplotlib
   - iperf3
+  - opencv
+  - libtensorflow
+  #- fabric-installer NEED TO INSTALL MANUALLY AFTER ZULU
 
 homebrew_taps:
   - homebrew/core
@@ -88,9 +91,10 @@ homebrew_cask_apps:
   - drawio
   - openemu-experimental
   - arduino
-  - virtualbox
-  - virtualbox-extension-pack
-  #- kstars
+  #- virtualbox
+  #- virtualbox-extension-pack
+  - kstars
+  - vmware-fusion-tech-preview
   - balenaetcher
   - vlc
   #- blender
@@ -102,6 +106,21 @@ homebrew_cask_apps:
   #- roblox
   - xquartz
   - steam
+  - discord
+  - epic-games
+  - transmission
+  #- eagle
+  - displaylink
+  - logitech-options
+  - spotify
+  - minecraft
+  - zulu
+  - commander-one
+  - raspberry-pi-imager
+  #- pycharm
+  - pycharm-ce
+  - obs
+  
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: 
