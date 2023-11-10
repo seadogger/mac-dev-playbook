@@ -5,6 +5,18 @@ configure_dotfiles: true
 configure_terminal: true
 configure_osx: true
 
+# Set to 'true' to configure the Dock via dockutil.
+configure_dock: false
+dockitems_remove: []
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+dockitems_persist: []
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
+
 configure_sudoers: false
 sudoers_custom_config: ''
 # Example:
@@ -13,7 +25,7 @@ sudoers_custom_config: ''
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
 dotfiles_repo: https://github.com/seadogger/dotfiles.git
-dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/dotfiles
 dotfiles_files:
   - .zshrc
@@ -30,26 +42,20 @@ homebrew_installed_packages:
   - gettext
   - gifsicle
   - git
+  - gh
   - go
   - gpg
-  - hub
   - httpie
-  - iperf
   - libevent
-  - sqlite
-  - mcrypt
   - nmap
   - node
   - nvm
   - php
-  - ssh-copy-id
   - readline
   - openssl
   - pv
   - wget
-  #- wrk
   - mas
-  - packer
   - terraform
   - awscli
   - libftdi
@@ -57,7 +63,6 @@ homebrew_installed_packages:
   - netpbm
   #- numpy
   - pyenv
-  #- balena-cli
   - zsh-history-substring-search
   - scipy
   #- matplotlib
@@ -65,12 +70,13 @@ homebrew_installed_packages:
   - opencv
   - libtensorflow
   #- fabric-installer NEED TO INSTALL MANUALLY AFTER ZULU
+  - libusb
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
-  - homebrew/cask-drivers
-  - homebrew/cask-versions
+  #- homebrew/cask-drivers
+  #- homebrew/cask-versions
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -78,7 +84,6 @@ homebrew_cask_apps:
   - firefox
   - google-chrome
   - handbrake
-  - sequel-pro
   - vagrant
   - visual-studio-code
   - microsoft-office
@@ -87,26 +92,20 @@ homebrew_cask_apps:
   - plex-media-player
   - sketchup
   #- java
-  - 8bitdo-firmware-updater
-  - drawio
+  #- 8bitdo-firmware-updater
   - openemu-experimental
   - arduino
   #- virtualbox
   #- virtualbox-extension-pack
-  - kstars
-  - vmware-fusion-tech-preview
+  #- kstars
   - balenaetcher
   - vlc
   #- blender
   - wireshark
   - prusaslicer
-  #- freecad
   - bitcoin-core
   - beyond-compare
-  #- roblox
   - xquartz
-  - steam
-  - discord
   - epic-games
   - transmission
   #- eagle
@@ -115,14 +114,10 @@ homebrew_cask_apps:
   - spotify
   - minecraft
   - zulu
-  - commander-one
   - raspberry-pi-imager
-  #- pycharm
-  - pycharm-ce
   - obs
-  - miniforge
-  - opera
   - google-drive
+  - papyrus
   
 
 # See `geerlingguy.mas` role documentation for usage instructions.
