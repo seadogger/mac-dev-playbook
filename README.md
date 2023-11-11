@@ -183,7 +183,6 @@ Finally, there are a few other preferences and settings added on for various app
   4. Install PixInsight (Need to down load), [StarNet++ v2 with M1](https://www.starnetastro.com/download/), [BatchFitsKeywordEdit](https://pixinsight.com/forum/index.php?threads/batch-edit-fits-headers.9389/page-3), [GHS Script](https://ghsastro.co.uk/information/), [HVB Scripts](http://www.skypixels.at/pixinsight_scripts.html#SKill), [EZ Suite](https://pixinsight.com/forum/index.php?threads/ez-processing-suite.14937/), [Star De-emphasizer](https://pixinsight.com/forum/index.php?threads/star-de-emphasizer-script-adam-blocks-star-reduction-method.16034/) 
   5. install tunnels for Wireguard using the QR codes from Wireguard Server
   6. Install StellarMate (App store)
-  7. Install Collimation Aid (App store)
 
 ## Ansible for DevOps
 
