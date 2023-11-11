@@ -156,7 +156,7 @@ npm_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages: 
+pip_packages: []
   #- name: setuptools
   #  state: latest
   #  executable: pip3
