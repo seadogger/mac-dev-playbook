@@ -56,7 +56,7 @@ homebrew_installed_packages:
   - pv
   - wget
   - mas
-  - terraform
+  #- terraform
   - awscli
   - libftdi
   - astrometry-net
@@ -72,16 +72,16 @@ homebrew_installed_packages:
   #- fabric-installer NEED TO INSTALL MANUALLY AFTER ZULU
   - libusb
 
-homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
+#homebrew_taps:
+  #- homebrew/core
+  #- homebrew/cask
   #- homebrew/cask-drivers
   #- homebrew/cask-versions
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - docker
-  - firefox
+  #- firefox
   - google-chrome
   - handbrake
   - vagrant
@@ -89,18 +89,18 @@ homebrew_cask_apps:
   - microsoft-office
   - tigervnc-viewer
   - makemkv
-  - plex-media-player
+  #- plex-media-player
   - sketchup
   #- java
   #- 8bitdo-firmware-updater
   - openemu-experimental
-  - arduino
+  #- arduino
   #- virtualbox
   #- virtualbox-extension-pack
   #- kstars
-  - balenaetcher
+  #- balenaetcher
   - vlc
-  #- blender
+  - blender
   - wireshark
   - prusaslicer
   - bitcoin-core
@@ -117,6 +117,10 @@ homebrew_cask_apps:
   - obs
   - google-drive
   - papyrus
+  #- freecad
+  - chatbox
+  - chatgpt
+  - ganttproject
   
 
 # See `geerlingguy.mas` role documentation for usage instructions.
@@ -186,6 +190,8 @@ visual_studio_code_extensions:
     publisher: ms-python
   - extensionName: python
     publisher: ms-python
+  - extensionName: codeium
+    publisher: codeium
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
