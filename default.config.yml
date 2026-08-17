@@ -4,6 +4,7 @@ downloads: ~/.ansible-downloads/
 configure_dotfiles: false
 configure_terminal: true
 configure_osx: true
+configure_vscode: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
@@ -34,115 +35,134 @@ dotfiles_files:
   - .osx
   - .vimrc
 
+# Homebrew 4.x ships core/cask as a JSON API; tapping them forces a slow full
+# git clone. Leave empty unless you need a third-party tap.
+homebrew_taps: []
+
+# Set to true if you want every run to also `brew upgrade` everything.
+homebrew_upgrade_all_packages: false
+
+# This Mac's Homebrew git checkout lives at /opt/homebrew/Homebrew (confirm with
+# `brew --repository`). geerlingguy.mac 5.x defaults to /opt/homebrew on Apple
+# Silicon, which would make the role recursively chown the entire prefix.
+homebrew_install_path: /opt/homebrew/Homebrew
+
+# Mirrors `brew leaves` (top-level, intentionally installed formulae).
+# Dependencies (openssl, readline, gettext, numpy, libusb, ...) are omitted on
+# purpose -- Homebrew pulls them in automatically.
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
+  # - ansible  # Bootstrap dependency; installing it from here can upgrade Ansible mid-run.
+  - astrometry-net
+  - awscli
   - bash-completion
+  - bfg
+  - carthage
+  - cask
+  - cocoapods
+  - django-completion
   - doxygen
-  - gettext
+  - gh
   - gifsicle
   - git
-  - gh
+  - gnupg
   - go
-  - gpg
   - httpie
-  - libevent
-  - nmap
-  - node
-  - nvm
-  - php
-  - readline
-  - openssl
-  - pv
-  - wget
-  - mas
-  #- terraform
-  - awscli
-  - libftdi
-  - astrometry-net
-  - netpbm
-  - numpy
-  - pyenv
-  - zsh-history-substring-search
-  - scipy
-  #- matplotlib
+  - hub
   - iperf3
-  - opencv
+  - kubernetes-cli
+  - libftdi
   - libtensorflow
-  #- fabric-installer NEED TO INSTALL MANUALLY AFTER ZULU
-  - libusb
-
-#homebrew_taps:
-  #- homebrew/core
-  #- homebrew/cask
-  #- homebrew/cask-drivers
-  #- homebrew/cask-versions
+  - mas
+  - mlx
+  - nmap
+  - nvm
+  - opencv
+  - php
+  - pipx
+  - postgresql@14
+  - pv
+  - pybind11
+  - pyenv
+  - python-tk@3.13
+  - rbenv
+  - scipy
+  - signal-cli
+  - swiftformat
+  - swiftgen
+  - uv
+  - watchman
+  - wget
+  - xcodegen
+  - zsh-history-substring-search
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - docker
-  #- firefox
-  - google-chrome
-  - handbrake
-  - vagrant
-  - visual-studio-code
-  - microsoft-office
-  - tigervnc-viewer
-  - makemkv
-  #- plex-media-player
-  - sketchup
-  #- java
-  #- 8bitdo-firmware-updater
-  - openemu-experimental
-  #- arduino
-  #- virtualbox
-  #- virtualbox-extension-pack
-  #- kstars
-  #- balenaetcher
-  - vlc
-  - blender
-  - wireshark
-  - prusaslicer
-  - bitcoin-core
-  - beyond-compare
-  - xquartz
+  - claude
+  - claude-code
   - epic-games
-  #- eagle
-  - displaylink
-  - logitech-options
-  - spotify
-  - minecraft
-  - zulu
-  - raspberry-pi-imager
-  - obs
-  - google-drive
-  - papyrus
-  #- freecad
-  - chatbox
-  - chatgpt
   - ganttproject
-  
+  - google-chrome
+  - google-drive
+  - handbrake-app
+  - makemkv
+  - nextcloud
+  - obs
+  - obsidian
+  - prusaslicer
+  - raspberry-pi-imager
+  - roblox
+  - signal
+  - sketchup
+  - spotify
+  - steam
+  - tigervnc
+  - visual-studio-code
+  - xquartz
+  - zulu
+
+# Not installed on this Mac. Uncomment to bring one back.
+#  - beyond-compare      # Removed 2026-08; Homebrew record cleared.
+#  - bitcoin-core
+#  - blender
+#  - displaylink
+#  - docker-desktop      # Renamed from `docker`.
+#  - microsoft-office    # Removed 2026-08.
+#  - minecraft           # Removed 2026-08; Homebrew record cleared.
+#  - vagrant
+#  - vlc
+#  - wireshark
+# Removed upstream / deprecated -- do not re-add as-is:
+#  - openemu-experimental  # No longer in Homebrew.
+#  - logitech-options      # Deprecated; use `logi-options-plus`.
+#  - papyrus               # Deprecated (fails Gatekeeper).
+#  - chatbox               # Available, just not installed here.
+#  - chatgpt               # Available, just not installed here.
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: 
- - { id: 1037215068, name: "Observatory (2.0.3)" }
- - { id: 405399194, name: "Kindle Classic (1.40.3)" }
- - { id: 1091675654, name: "Shapr3D (5.500.0)" }
- - { id: 409183694, name: "Keynote (13.2)" }
- - { id: 408981434, name: "iMovie (10.3.10)" }
- - { id: 905384638, name: "FileBot (5.1.2)" }
- - { id: 1451685025, name: "WireGuard (1.0.16)" }
- - { id: 463362050, name: "PhotoSweeper (4.8.4)" }
- - { id: 1463298887, name: "Userscripts-Mac-App (4.4.5)" }
- - { id: 1059878623, name: "Collimation Aid (1.3)" }
- - { id: 1137297689, name: "xLights (2023.19)" }
- - { id: 425264550, name: "Disk Speed Test (3.4.2)" }
- - { id: 409201541, name: "Pages (13.2)" }
- - { id: 409203825, name: "Numbers (13.2)" }
+# Note: you must be signed in to the App Store first; `mas` can no longer sign
+# in for you, so `mas_email`/`mas_password` are intentionally not set.
+mas_installed_apps:
+  - { id: 905384638, name: "FileBot" }
+  - { id: 561350520, name: "GoPro Quik" }
+  - { id: 949582631, name: "HDHomeRun" }
+  - { id: 409183694, name: "Keynote" }
+  - { id: 405399194, name: "Kindle Classic" }
+  - { id: 409203825, name: "Numbers" }
+  - { id: 1037215068, name: "Observatory" }
+  - { id: 409201541, name: "Pages" }
+  - { id: 463362050, name: "PhotoSweeper" }
+  - { id: 899247664, name: "TestFlight" }
+  - { id: 1463298887, name: "Userscripts" }
+  - { id: 1451685025, name: "WireGuard" }
+  - { id: 497799835, name: "Xcode" }
 
-  #- { id: 1252626058, name: "StellarMate 2.4.3"}  Not currently working from app store (iPad App)
-mas_email: ""
-mas_password: ""
+# Not installed on this Mac. Uncomment to bring one back.
+#  - { id: 1091675654, name: "Shapr3D" }
+#  - { id: 408981434, name: "iMovie" }
+#  - { id: 1059878623, name: "Collimation Aid" }
+#  - { id: 1137297689, name: "xLights" }
+#  - { id: 425264550, name: "Disk Speed Test" }
+#  - { id: 1252626058, name: "StellarMate" }  # iPad app; not installable from the Mac App Store.
 
 osx_script: "~/.osx --no-restart"
 
@@ -162,36 +182,35 @@ npm_packages: []
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
 pip_packages: []
-  #- name: setuptools
-  #  state: latest
-  #  executable: pip3
-  #- name: pyfits
-  #  state: latest
-  #  executable: pip3
+  # - name: setuptools
+  #   state: latest
+  #   executable: pip3
 
-visual_studio_code_extensions: 
-  - extensionName: gitlens
-    publisher: eamodio
-  - extensionName: terraform
-    publisher: hashicorp
-  - extensionName: python
-    publisher: ms-python
-  - extensionName: vscode-arduino
-    publisher: vsciot-vscode
-  - extensionName: cpptools
-    publisher: ms-vscode
-  - extensionName: theme-dracula
-    publisher: dracula-theme
-  - extensionName: platformio-ide
-    publisher: platformio
-  - extensionName: vscode-docker
-    publisher: ms-azuretools
-  - extensionName: vscode-pylance
-    publisher: ms-python
-  - extensionName: python
-    publisher: ms-python
-  - extensionName: codeium
-    publisher: codeium
+# Extension IDs as reported by `code --list-extensions`. The CLI is read out of
+# the app bundle so `code` does not need to be on your $PATH.
+visual_studio_code_cli: "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+visual_studio_code_extensions:
+  - anthropic.claude-code
+  - bierner.markdown-mermaid
+  - bpruitt-goddard.mermaid-markdown-syntax-highlighting
+  - dracula-theme.theme-dracula
+  - eamodio.gitlens
+  - george-alisson.html-preview-vscode
+  - llvm-vs-code-extensions.lldb-dap
+  - ms-python.debugpy
+  - ms-python.isort
+  - ms-python.python
+  - ms-python.vscode-pylance
+  - ms-python.vscode-python-envs
+  - ms-vscode-remote.remote-ssh
+  - ms-vscode-remote.remote-ssh-edit
+  - ms-vscode.cpptools
+  - ms-vscode.remote-explorer
+  - ms-vscode.vscode-serial-monitor
+  - pkief.material-icon-theme
+  - shd101wyy.markdown-preview-enhanced
+  - swiftlang.swift-vscode
+  - tomoki1207.pdf
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

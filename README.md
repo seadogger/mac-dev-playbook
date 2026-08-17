@@ -1,41 +1,62 @@
 # Mac Development Ansible Playbook
 
-This playbook installs and configures my Mac for general use and software development.  This is a work in progress, and is mostly a means for me to document my current Mac's setup and learn Ansible.
+This playbook installs and configures my Mac for general use and software development.
 
 *See also*:
-  - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
+  - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook) (upstream)
   - [osxc](https://github.com/osxc)
   - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
-  - [Nilesh Gule's Technical Blog](https://www.handsonarchitect.com/2017/07/setup-macbook-almost-at-speed-of-light.html) (Visual Studio Code Extensions Installer task)
 
 ## Installation
 
-  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-  2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
+  1. Ensure Apple's command line tools are installed: `xcode-select --install`.
+  2. Install Homebrew (this also bootstraps step 1 if you skipped it):
 
-     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.12/bin:/opt/homebrew/bin:$PATH"`
-     2. Upgrade Pip: `sudo pip3 install --upgrade pip`
-     3. Install Ansible: `pip3 install ansible`
+     ```sh
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+     ```
 
-  3. Clone or download this repository to your local drive.
-  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
-  5. Run `ansible-playbook main.yml --ask-become-pass` inside this directory. Enter your macOS account password when prompted for the 'BECOME' password.
+     On Apple Silicon, Homebrew lives in `/opt/homebrew`, which is not on the
+     default `$PATH`. Add it to your shell profile:
 
-> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
+     ```sh
+     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+     eval "$(/opt/homebrew/bin/brew shellenv)"
+     ```
 
-> Note: On M1 Macs homebrew is installed in /opt/homebrew and all homebrew apps installed are located in /opt/homebrew/bin which is not in the default $PATH variable.  This needs to be added to the $PATH to find these installated applications
+  3. Install Ansible: `brew install ansible`
+  4. Clone this repository to your local drive.
+  5. Sign in to the App Store (`mas` can no longer sign in for you, and the
+     `mas` tasks are skipped for anything not already purchased).
+  6. Install the required roles and collections:
+
+     ```sh
+     ansible-galaxy install -r requirements.yml
+     ansible-galaxy collection install -r requirements.yml
+     ```
+
+  7. Run the playbook, entering your macOS account password at the `BECOME` prompt:
+
+     ```sh
+     ansible-playbook main.yml --ask-become-pass
+     ```
+
+> Note: If some Homebrew commands fail, you may need to agree to Xcode's license
+> or fix another Brew issue. Run `brew doctor` to check.
 
 ### Running a specific set of tagged tasks
 
-You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages` and `osx`.
+Filter which part of the provisioning process runs with `ansible-playbook`'s
+`--tags` flag. Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`,
+`terminal`, `osx`, `extra-packages`, `vscode`, and `post`.
 
-    ansible-playbook main.yml -K --tags "dotfiles,homebrew"
+    ansible-playbook main.yml -K --tags "homebrew,mas"
 
 ## Overriding Defaults
 
-Not everyone's development environment and preferred software configuration is the same.
-
-You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
+Not everyone's development environment and preferred software configuration is
+the same. Override any of the defaults in `default.config.yml` by creating a
+`config.yml` file (git-ignored) and setting the overrides there:
 
 ```yaml
 homebrew_installed_packages:
@@ -43,26 +64,14 @@ homebrew_installed_packages:
   - git
   - go
 
+homebrew_cask_apps:
+  - google-chrome
+
 mas_installed_apps:
-  - { id: 443987910, name: "1Password" }
-  - { id: 498486288, name: "Quick Resizer" }
-  - { id: 557168941, name: "Tweetbot" }
   - { id: 497799835, name: "Xcode" }
-
-composer_packages:
-  - name: hirak/prestissimo
-  - name: drush/drush
-    version: '^8.1'
-
-gem_packages:
-  - name: bundler
-    state: latest
 
 npm_packages:
   - name: webpack
-
-pip_packages:
-  - name: mkdocs
 
 configure_dock: true
 dockitems_remove:
@@ -74,187 +83,124 @@ dockitems_persist:
     pos: 5
 ```
 
-Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
+Any variable can be overridden in `config.yml`; see the supporting roles'
+documentation for a complete list of available variables.
 
-## Default Applications and Configuration to Install
+## What Gets Installed
 
-### Applications (installed with Homebrew Cask):
+`default.config.yml` is the single source of truth and is kept in sync with what
+is actually installed on this Mac. It covers:
 
-  - [Docker](https://www.docker.com/)
-  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-  - [Google Chrome](https://www.google.com/chrome/)
-  - [Handbrake](https://handbrake.fr)
-  - [Sequel Pro](https://www.sequelpro.com/)
-  - [Vagrant](https://www.vagrantup.com/)
-  - [Visual Studio Code](https://code.visualstudio.com)
-  - [Microsoft Office](https://products.office.com/en-us/mac/microsoft-office-for-mac)
-  - [Tiger VNC Viewer](https://tigervnc.org)
-  - [Makemkv](https://makemkv.com)
-  - [Plex Media Player](https://www.plex.tv)
-  - [Sketchup](https://www.sketchup.com)
-  - [Java](https://www.java.com/en/)
-  - [8bitdo Firmware Updater](https://www.8bitdo.com)
-  - [Drawio](https://www.draw.io)
-  - [OpenEMU](http://openemu.org)
-  - [Arduino IDE](https://www.arduino.cc/en/main/software)
-  - [Virtual Box](https://www.virtualbox.org)
-  - [balenaEtcher](https://www.balena.io/etcher/)
-  - [VLC](https://www.videolan.org)
-  - [Wireshark](https://www.wireshark.org)
-  - [PrusaSlicer](https://www.prusa3d.com/page/prusaslicer_424/)
-  - [BitCoin-Core](https://bitcoin.org/en/bitcoin-core/)
-  - [Beyond Compare](https://www.scootersoftware.com)
-  - [xQuartz](https://www.xquartz.org)
-  - [Steam](https://store.steampowered.com)
+  - **Homebrew formulae** — `homebrew_installed_packages`, mirroring `brew leaves`
+    (top-level installs only; dependencies are omitted since Homebrew resolves them).
+  - **Homebrew casks** — `homebrew_cask_apps`, mirroring `brew list --cask`.
+    Apps that were previously installed but aren't anymore are kept commented out
+    so they're easy to restore.
+  - **Mac App Store apps** — `mas_installed_apps`, mirroring `mas list`.
+  - **VS Code extensions** — `visual_studio_code_extensions`, mirroring
+    `code --list-extensions`.
 
-### Packages (installed with Homebrew):
+### Checking for drift
 
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
-  - git
-  - gh
-  - go
-  - gpg
-  - httpie
-  - iperf
-  - libevent
-  - sqlite
-  - mcrypt
-  - nmap
-  - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - readline
-  - openssl
-  - pv
-  - wget
-  - mas
-  - packer
-  - terraform
-  - awscli
-  - libftdi
-  - netpbm
-  - numpy
-  - pyenv
-  - zsh-history-substring-search
-  - scipy
-  - iperf3
+After installing or removing software by hand, check the config still matches
+the machine:
 
+```sh
+./scripts/verify-config.py
+```
 
-### Pip Installed Packages:
+It diffs all four lists in both directions and exits non-zero on drift, so it
+also works as a pre-commit hook. It understands two things a naive diff gets
+wrong: Homebrew's rename symlinks (e.g. `handbrake` → `handbrake-app`) are
+collapsed to their canonical names, and casks whose app has been deleted but
+whose Homebrew record lingers are reported separately — those are invisible
+otherwise, since the playbook sees them as already installed and skips them.
 
-### Mac App Store Installed Apps:
+The underlying commands, if you'd rather check by hand:
 
-  - [Disk Speed Test](https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12)
-  - [PhotoSweeper](https://apps.apple.com/us/app/photosweeper/id463362050?mt=12)
-  - [FileBot](https://apps.apple.com/us/app/filebot/id905384638?mt=12)
-  - [xLights](https://apps.apple.com/us/app/xlights-tools/id1562578750)
-  - [Keynote](https://www.apple.com/keynote/)
-  - [Numbers](https://www.apple.com/numbers/)
-  - [WireGuard](https://apps.apple.com/id/app/wireguard/id1441195209?l=id)
-  - [StellarMate](https://apps.apple.com/id/app/stellarmate/id1252626058)  Not currently working
+```sh
+brew leaves
+brew list --cask
+mas list
+code --list-extensions
+```
 
-### Visual Studio Code Extensions (Visual Studio Code must be in list of Homebrew Casks above)
+My [dotfiles](https://github.com/seadogger/dotfiles) can also be installed into
+the current user's home directory, including the `.osx` dotfile for configuring
+many aspects of macOS. Dotfiles management is off by default here
+(`configure_dotfiles: false`) because `~/dotfiles` is already cloned; set it to
+`true` on a fresh machine.
 
-  - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) by Eric Amodio
-  - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) by Mikael Olenfalk
-  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) by Microsoft
-  - [Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino) by Microsoft
-  - [Cpp/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) by Microsoft
-  - [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) (Theme)
-  - [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) by PlatformIO
-  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
-  - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+## Manual Installs
 
-My [dotfiles](https://github.com/seadogger/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
+These are installed by hand and are **not** managed by this playbook — the list
+is what is actually on this Mac, verified against `/Applications`. Reinstall
+them yourself after a rebuild.
 
-Finally, there are a few other preferences and settings added on for various apps and services.
+| App | Size | Source |
+|---|---|---|
+| [PixInsight](https://pixinsight.com) | 3.1 GB | Paid download; requires a license |
+| [Topaz Labs suite](https://www.topazlabs.com) (Video Enhance AI, DeNoise, Gigapixel, Sharpen, Mask, Studio 2) | 6.6 GB | Paid download; requires a license |
+| [Original Prusa Drivers](https://www.prusa3d.com/drivers/) | 336 MB | Driver bundle — see note below |
+| StellarMate | 113 MB | Sideloaded iPad app; not on the Mac App Store |
+| stellarmatetools | — | Ships with StellarMate |
+| [Epson Software](https://epson.com/support) (Connect Printer Setup, Scan 2) | 7.3 MB | Printer/scanner drivers |
+| [CuaDriver](https://trycua.com) | — | Direct download |
+| FloridaParkAvailability | 2.1 MB | Self-built app |
 
-## Manual Stuff TODO
+> Note: `Original Prusa Drivers` bundles its own copy of PrusaSlicer, which
+> duplicates the `prusaslicer` Homebrew cask. Keep one or the other to avoid two
+> versions drifting apart.
+
+Astrophotography add-ons for PixInsight, all installed from within the app:
+[StarNet++ v2 for Apple Silicon](https://www.starnetastro.com/download/),
+[BatchFitsKeywordEdit](https://pixinsight.com/forum/index.php?threads/batch-edit-fits-headers.9389/page-3),
+[GHS Script](https://ghsastro.co.uk/information/),
+[HVB Scripts](http://www.skypixels.at/pixinsight_scripts.html#SKill),
+[EZ Suite](https://pixinsight.com/forum/index.php?threads/ez-processing-suite.14937/),
+[Star De-emphasizer](https://pixinsight.com/forum/index.php?threads/star-de-emphasizer-script-adam-blocks-star-reduction-method.16034/).
+
+## Manual Configuration TODO
 
   1. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
-  2. Enable the license codes within Word, Excel, Powerpoint, Makemkv, Plex
-  3. Set the fileBot default format string for video file conversion {plex}'-'{vf}{vc}.mkv
-  4. Install PixInsight (Need to down load), [StarNet++ v2 with M1](https://www.starnetastro.com/download/), [BatchFitsKeywordEdit](https://pixinsight.com/forum/index.php?threads/batch-edit-fits-headers.9389/page-3), [GHS Script](https://ghsastro.co.uk/information/), [HVB Scripts](http://www.skypixels.at/pixinsight_scripts.html#SKill), [EZ Suite](https://pixinsight.com/forum/index.php?threads/ez-processing-suite.14937/), [Star De-emphasizer](https://pixinsight.com/forum/index.php?threads/star-de-emphasizer-script-adam-blocks-star-reduction-method.16034/) 
-  5. install tunnels for Wireguard using the QR codes from Wireguard Server
-  6. Install StellarMate (App store)
-
-## Ansible for DevOps
-
-Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches you how to automate almost anything with Ansible.
-
-## Author
-
-Seadogger, 2019 Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).
-
+  2. Enter the license code for MakeMKV.
+  3. Set the FileBot default format string for video file conversion: `{plex}'-'{vf}{vc}.mkv`
+  4. Install tunnels for WireGuard using the QR codes from the WireGuard server.
+  5. Sign in to the App Store before running the `mas` tag.
 
 ## Troubleshooting
 
-### Visual Studio Code Plugins not working
-open Visual Studio Code
+### The `code` command isn't found
 
-Open the Command Palette via (⇧⌘P) and type shell command to find the Shell Command:
+The `vscode` tag looks for the CLI inside the app bundle, so it works without
+`code` on your `$PATH`. To get `code` in your shell anyway, open VS Code, hit
+⇧⌘P, and run **Shell Command: Install 'code' command in PATH**.
 
-Install 'code' command in PATH** command.
+### `Unexpected Exception` or a removed-callback error on startup
 
+An old `community.general` in `~/.ansible/collections` shadows the version
+bundled with Homebrew's Ansible and can break the stdout callback. Check which
+copy wins and remove the stale one:
 
-### Dock Crashes and Continously tries to restart
+    ansible-galaxy collection list community.general
+    rm -rf ~/.ansible/collections/ansible_collections/community/general
 
-#### System Console Error
-    Process:               Dock [32541]
-    Path:                  /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
-    Identifier:            com.apple.dock
-    Version:               1.8 (2044.6.1)
-    Build Info:            Dock-2044006001000000~61
-    Code Type:             X86-64 (Native)
-    Parent Process:        ??? [1]
-    Responsible:           Dock [32541]
-    User ID:               501
+### Homebrew reports a cask as installed, but the app is missing
 
-    Date/Time:             2020-03-08 12:08:51.511 -0400
-    OS Version:            Mac OS X 10.15.3 (19D76)
-    Report Version:        12
-    Anonymous UUID:        3E6E01AE-21A0-A32C-0B36-BC750009B8CB
+Homebrew's Caskroom metadata can go stale if an app was deleted by hand. The
+playbook will skip reinstalling it, so force it:
 
-#### System Console Error Log Details 
-    Time Awake Since Boot: 36000 seconds
+    brew reinstall --cask <name>
 
-    System Integrity Protection: enabled
-
-    Crashed Thread:        0  Dispatch queue: com.apple.main-thread
-
-    Exception Type:        EXC_CRASH (SIGABRT)
-    Exception Codes:       0x0000000000000000, 0x0000000000000000
-    Exception Note:        EXC_CORPSE_NOTIFY
-
-    Application Specific Information:
-    dyld3 mode
-    *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString unsignedIntValue]: unrecognized selector sent to instance 0x6000032d1040' terminating with uncaught exception of type NSException abort() called
-
-    Application Specific Backtrace 1:
-    0   CoreFoundation                      0x00007fff3a29238b __exceptionPreprocess + 250
-    1   libobjc.A.dylib                     0x00007fff70470552 objc_exception_throw + 48
-    2   CoreFoundation                      0x00007fff3a3117f0 -[NSObject(NSObject) __retain_OA] + 0
-    3   CoreFoundation                      0x00007fff3a1f69f4 ___forwarding___ + 1427
-    4   CoreFoundation                      0x00007fff3a1f63d8 _CF_forwarding_prep_0 + 120
-    5   Dock                                0x0000000101517115 Dock + 49429
-    6   Dock                                0x0000000101516c84 Dock + 48260
-    7   Dock                                0x0000000101516786 Dock + 46982
-    8   Dock                                0x0000000101514222 Dock + 37410
-    9   Dock                                0x0000000101512c5f Dock + 31839
-    10  Dock                                0x0000000101670a55 Dock + 1464917
-    11  Dock                                0x000000010167150e Dock + 1467662
-    12  libswiftObjectiveC.dylib            0x00007fff7147bf0e$s10ObjectiveC15autoreleasepool8invokingxxyKXE_tKlF + 46
-    13  Dock                                0x0000000101510fc7 Dock + 24519
-    14  libdyld.dylib                       0x00007fff717d27fd start + 1
-
-#### Corrective Action
-Run the following command in a terminal window
+### Dock crashes and continuously restarts
 
     rm ~/Library/Application\ Support/Dock/desktoppicture.db
 
+## Ansible for DevOps
+
+Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches
+you how to automate almost anything with Ansible.
+
+## Author
+
+Seadogger, 2019. Forked from [Jeff Geerling](https://www.jeffgeerling.com/) - [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook).

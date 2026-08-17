@@ -12,15 +12,32 @@
         - "{{ playbook_dir }}/config.yml"
       tags: ['always']
 
+    - name: Locate the active developer directory.
+      command: xcode-select -p
+      register: xcode_select_result
+      changed_when: false
+      failed_when: false
+      check_mode: false
+      tags: ['always']
+
   roles:
+    # The command-line-tools role stats /Library/Developer/CommandLineTools,
+    # which does not exist when the toolchain comes from full Xcode. It then
+    # searches `softwareupdate -l` for a Command Line Tools package, finds none
+    # (Xcode already provides it), and fails its own `failed_when`. Skip the
+    # role entirely when a developer directory is already active; on a bare Mac
+    # `xcode-select -p` exits non-zero and the role runs as intended.
     - role: elliotweiser.osx-command-line-tools
+      when: xcode_select_result.rc != 0
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
     - role: geerlingguy.dotfiles
       when: configure_dotfiles
       tags: ['dotfiles']
     - role: geerlingguy.mac.mas
-      when: mas_installed_apps or mas_installed_app_ids
+      # ansible-core 2.21+ requires conditionals to resolve to a boolean, so
+      # these lists have to be length-checked rather than used for truthiness.
+      when: (mas_installed_apps | length > 0) or (mas_installed_app_ids | length > 0)
       tags: ['mas']
     - role: geerlingguy.mac.dock
       when: configure_dock
@@ -41,6 +58,10 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
+
+    - import_tasks: tasks/vscode.yml
+      when: configure_vscode
+      tags: ['vscode']
 
     - name: Run post-provision task files in a block.
       tags: ['post']

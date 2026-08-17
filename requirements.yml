@@ -1,7 +1,12 @@
 ---
 roles:
   - name: elliotweiser.osx-command-line-tools
+    version: 2.3.0
   - name: geerlingguy.dotfiles
+    version: 1.2.1
 
 collections:
+  # 5.x uses `ansible_facts.*` instead of the top-level `ansible_*` variables,
+  # which are being removed in ansible-core 2.24.
   - name: geerlingguy.mac
+    version: ">=5.0.0,<6.0.0"

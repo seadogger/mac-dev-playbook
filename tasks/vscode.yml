@@ -1,0 +1,34 @@
+---
+# Install Visual Studio Code extensions listed in `visual_studio_code_extensions`.
+# The CLI path contains a space, so every command here uses `argv` form rather
+# than a string (which `command` would split on whitespace).
+- name: Locate the Visual Studio Code CLI.
+  stat:
+    path: "{{ visual_studio_code_cli }}"
+  register: vscode_cli
+
+- name: Report when Visual Studio Code is not installed.
+  debug:
+    msg: "Visual Studio Code is not installed; skipping extension setup."
+  when: not vscode_cli.stat.exists
+
+- name: Configure Visual Studio Code extensions.
+  when: vscode_cli.stat.exists
+  block:
+    - name: Get installed Visual Studio Code extensions.
+      command:
+        argv:
+          - "{{ visual_studio_code_cli }}"
+          - --list-extensions
+      register: vscode_installed_extensions
+      changed_when: false
+      check_mode: false
+
+    - name: Ensure configured Visual Studio Code extensions are installed.
+      command:
+        argv:
+          - "{{ visual_studio_code_cli }}"
+          - --install-extension
+          - "{{ item }}"
+      loop: "{{ visual_studio_code_extensions }}"
+      when: item | lower not in (vscode_installed_extensions.stdout_lines | map('lower') | list)
