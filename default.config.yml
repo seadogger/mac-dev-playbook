@@ -1,10 +1,11 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: false
+configure_dotfiles: true
 configure_terminal: true
 configure_osx: true
 configure_vscode: true
+configure_shell_local: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
@@ -25,9 +26,17 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/seadogger/dotfiles.git
+# Track the upstream dotfiles directly rather than maintaining a fork. The role
+# only symlinks files into place -- it has no merge step -- so machine-specific
+# shell config lives in ~/.aliases instead (templates/aliases.j2), which the
+# upstream .zshrc already sources. See tasks/shell-local.yml.
+#
+# The destination is deliberately NOT ~/dotfiles: that path still holds the old
+# personal fork, and pointing a different remote at an existing repo makes the
+# git module fail.
+dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/dotfiles
+dotfiles_repo_local_destination: ~/Documents/dotfiles
 dotfiles_files:
   - .zshrc
   - .gitignore

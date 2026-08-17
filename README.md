@@ -47,7 +47,7 @@ This playbook installs and configures my Mac for general use and software develo
 ### Running a specific set of tagged tasks
 
 Filter which part of the provisioning process runs with `ansible-playbook`'s
-`--tags` flag. Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`,
+`--tags` flag. Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`, `shell-local`,
 `terminal`, `osx`, `extra-packages`, `vscode`, and `post`.
 
     ansible-playbook main.yml -K --tags "homebrew,mas"
@@ -125,11 +125,31 @@ mas list
 code --list-extensions
 ```
 
-My [dotfiles](https://github.com/seadogger/dotfiles) can also be installed into
-the current user's home directory, including the `.osx` dotfile for configuring
-many aspects of macOS. Dotfiles management is off by default here
-(`configure_dotfiles: false`) because `~/dotfiles` is already cloned; set it to
-`true` on a fresh machine.
+## Dotfiles
+
+Dotfiles come straight from [geerlingguy/dotfiles](https://github.com/geerlingguy/dotfiles)
+rather than a personal fork. The role clones that repo to `~/Documents/dotfiles`
+and symlinks `.zshrc`, `.gitignore`, `.inputrc`, `.osx` and `.vimrc` into `$HOME`.
+
+The role only symlinks — it has no merge step, so whatever upstream ships lands
+verbatim. Machine-specific shell config therefore lives in `~/.aliases`, which
+the upstream `.zshrc` already sources, rendered from
+[`templates/aliases.j2`](templates/aliases.j2) by `tasks/shell-local.yml`. Edit
+the template, not `~/.aliases` — the next run overwrites it.
+
+The most important thing that file does is `typeset -U path PATH`. The upstream
+`.zshrc` prepends nine entries to `PATH` unconditionally and runs for every
+interactive shell, so without it each nested shell stacks another copy and `PATH`
+grows without bound. Setting `-U` dedupes the array immediately and the attribute
+persists, so later appends stay clean too.
+
+`.osx` is taken as-is from upstream. Note that it is materially smaller than the
+2021-era copy some forks still carry: Jeff has pruned settings that no longer
+work on modern macOS, and a few that still do (Dock autohide timing, Finder
+path bar, screenshot location, immediate screensaver password). If you want any
+of those back, add them to a task in this repo rather than forking the dotfiles.
+
+`.osx` runs on **every** playbook run via `osx_script`, under the `osx` tag.
 
 ## Manual Installs
 

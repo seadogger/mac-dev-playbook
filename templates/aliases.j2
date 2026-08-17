@@ -1,0 +1,64 @@
+# {{ ansible_managed }}
+#
+# Local shell customizations, layered on top of the upstream dotfiles .zshrc.
+#
+# The upstream .zshrc sources this file (`if [ -f ~/.aliases ]`) at roughly line
+# 30 -- after it has built PATH, but before compinit runs. That ordering is what
+# makes this file the right place for the overrides below. Edit
+# templates/aliases.j2 in the mac-dev-playbook repo, not ~/.aliases directly.
+
+# ---------------------------------
+# PATH hygiene
+# ---------------------------------
+# The upstream .zshrc prepends nine entries to PATH unconditionally, and .zshrc
+# runs for every interactive shell -- so without this, each nested shell stacked
+# another copy and PATH grew without bound.
+#
+# Setting -U dedupes the array immediately, and the attribute persists for the
+# life of the shell, so everything appended later (bun, LM Studio, uv, and the
+# upstream lines themselves) stays deduped too.
+typeset -U path PATH fpath
+
+# Let brew emit its own environment. This install uses the older layout, with
+# the git repo at /opt/homebrew/Homebrew and the prefix at /opt/homebrew;
+# shellenv derives HOMEBREW_REPOSITORY correctly rather than us hardcoding it,
+# and adds share/zsh/site-functions to fpath in time for compinit.
+eval "$({{ homebrew_prefix | default('/opt/homebrew') }}/bin/brew shellenv)"
+
+# ---------------------------------
+# Aliases
+# ---------------------------------
+alias ll='ls -al'
+alias hi='history'
+
+# ---------------------------------
+# Limits
+# ---------------------------------
+ulimit -n 8196
+
+# ---------------------------------
+# Tooling on PATH
+# ---------------------------------
+# uv / pipx shims
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# LM Studio CLI (lms)
+[ -d "$HOME/.cache/lm-studio/bin" ] && path=($path "$HOME/.cache/lm-studio/bin")
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+[ -d "$BUN_INSTALL/bin" ] && path=("$BUN_INSTALL/bin" $path)
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# ---------------------------------
+# Residual
+# ---------------------------------
+# `resi` reaches the shell through ~/.local/bin/resi, a wrapper that sets
+# PYTHONPATH for that one process. Nothing is activated and nothing is exported
+# globally, on purpose: this shell's `python` and `pip` stay whatever the
+# current project needs, and no other Python process inherits Residual's
+# packages on sys.path.
+#
+# `setupenv` activates the venv explicitly, for the times you do want it.
+export RESIDUAL_HOME="$HOME/Desktop/Development/residual"
+alias setupenv='source "$RESIDUAL_HOME/.venv/bin/activate"'

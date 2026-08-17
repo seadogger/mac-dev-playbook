@@ -1,0 +1,24 @@
+---
+# Local shell customizations layered on top of the upstream dotfiles.
+#
+# The dotfiles role symlinks the upstream .zshrc into place verbatim -- it has
+# no merge step -- so anything machine-specific has to live in a file that
+# .zshrc sources. Upstream already sources ~/.aliases, which is the hook used
+# here.
+- name: Ensure local shell customizations are in place.
+  template:
+    src: templates/aliases.j2
+    dest: "{{ ansible_env.HOME }}/.aliases"
+    mode: '0644'
+  become: false
+
+# The dotfiles repo ships a .gitignore intended as a global ignore file, but it
+# only takes effect if core.excludesfile points at it. Without this, the linked
+# ~/.gitignore sits there doing nothing.
+- name: Ensure the global gitignore is registered with git.
+  community.general.git_config:
+    name: core.excludesfile
+    scope: global
+    value: "{{ ansible_env.HOME }}/.gitignore"
+  become: false
+  when: "'.gitignore' in dotfiles_files"

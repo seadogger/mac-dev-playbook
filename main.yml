@@ -48,6 +48,12 @@
       when: configure_sudoers
       tags: ['sudoers']
 
+    # Must run after the dotfiles role, which symlinks the upstream .zshrc that
+    # sources ~/.aliases.
+    - import_tasks: tasks/shell-local.yml
+      when: configure_shell_local
+      tags: ['dotfiles', 'shell-local']
+
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
       tags: ['terminal']
