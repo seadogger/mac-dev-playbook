@@ -73,8 +73,10 @@ homebrew_installed_packages:
   - gh
   - gifsicle
   - git
-  - gnupg
+  # gnupg is intentionally omitted: poppler (below) depends on it, so it is now a
+  # dependency rather than a `brew leaves` entry. Homebrew reinstalls it as needed.
   - go
+  - handbrake
   - httpie
   - hub
   - iperf3
@@ -82,18 +84,21 @@ homebrew_installed_packages:
   - libftdi
   - libtensorflow
   - mas
+  - mkvtoolnix
   - mlx
   - nmap
   - nvm
   - opencv
   - php
   - pipx
+  - poppler
   - postgresql@14
   - pv
   - pybind11
   - pyenv
   - python-tk@3.13
   - rbenv
+  - rclone
   - scipy
   - signal-cli
   - swiftformat
@@ -101,6 +106,7 @@ homebrew_installed_packages:
   - uv
   - watchman
   - wget
+  - wimlib
   - xcodegen
   - zsh-history-substring-search
 
