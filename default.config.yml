@@ -108,6 +108,7 @@ homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - claude
   - claude-code
+  - codex
   - epic-games
   - ganttproject
   - google-chrome
