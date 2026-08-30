@@ -2,6 +2,15 @@
 - name: Configure host.
   hosts: all
 
+  vars:
+    # Sudo is only genuinely required on a bare Mac (creating /opt/homebrew and
+    # installing the Command Line Tools). On an already-provisioned machine every
+    # become task is a no-op that verifies state without root, so default become
+    # OFF — `ansible_become` (a connection variable) overrides the roles' task-level
+    # `become: true` keywords. For first-time bootstrap run:
+    #   ansible-playbook main.yml -e bootstrap=true --ask-become-pass
+    ansible_become: "{{ bootstrap | default(false) | bool }}"
+
   vars_files:
     - default.config.yml
 

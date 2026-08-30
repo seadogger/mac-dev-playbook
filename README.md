@@ -35,10 +35,20 @@ This playbook installs and configures my Mac for general use and software develo
      ansible-galaxy collection install -r requirements.yml
      ```
 
-  7. Run the playbook, entering your macOS account password at the `BECOME` prompt:
+  7. Run the playbook. On a **bare Mac** (first bootstrap — `/opt/homebrew` and the
+     Command Line Tools don't exist yet), sudo is genuinely required once; enter your
+     macOS account password at the `BECOME` prompt:
 
      ```sh
-     ansible-playbook main.yml --ask-become-pass
+     ansible-playbook main.yml -e bootstrap=true --ask-become-pass
+     ```
+
+     On an **already-provisioned machine** (routine re-runs to converge state), no
+     sudo is needed — become defaults off and the formerly-privileged tasks verify
+     state without root:
+
+     ```sh
+     ansible-playbook main.yml
      ```
 
 > Note: If some Homebrew commands fail, you may need to agree to Xcode's license
@@ -50,7 +60,7 @@ Filter which part of the provisioning process runs with `ansible-playbook`'s
 `--tags` flag. Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`, `shell-local`,
 `terminal`, `osx`, `extra-packages`, `vscode`, and `post`.
 
-    ansible-playbook main.yml -K --tags "homebrew,mas"
+    ansible-playbook main.yml --tags "homebrew,mas"
 
 ## Overriding Defaults
 
