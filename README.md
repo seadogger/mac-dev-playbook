@@ -35,17 +35,24 @@ This playbook installs and configures my Mac for general use and software develo
      ansible-galaxy collection install -r requirements.yml
      ```
 
-  7. Run the playbook. On a **bare Mac** (first bootstrap — `/opt/homebrew` and the
-     Command Line Tools don't exist yet), sudo is genuinely required once; enter your
-     macOS account password at the `BECOME` prompt:
+  7. Run the playbook.
+
+     **Bare Mac (first bootstrap):** install Xcode from the App Store first (sign in,
+     install — it's in the `mas` list anyway, and it provides the full toolchain, so
+     the Command Line Tools role never needs to run). Then the only thing on the
+     entire machine that genuinely requires root is creating Homebrew's prefix —
+     one transparent command:
 
      ```sh
-     ansible-playbook main.yml -e bootstrap=true --ask-become-pass
+     sudo mkdir -p /opt/homebrew && sudo chown "$(whoami)" /opt/homebrew
+     ansible-playbook main.yml
      ```
 
-     On an **already-provisioned machine** (routine re-runs to converge state), no
-     sudo is needed — become defaults off and the formerly-privileged tasks verify
-     state without root:
+     (Headless fallback — no Xcode, CLT installed via `softwareupdate`, which is
+     root-only: `ansible-playbook main.yml -e bootstrap=true --ask-become-pass`.)
+
+     **Already-provisioned machine (routine re-runs):** no sudo, ever — become
+     defaults off and the formerly-privileged tasks verify state without root:
 
      ```sh
      ansible-playbook main.yml
