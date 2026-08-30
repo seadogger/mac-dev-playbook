@@ -88,7 +88,6 @@ homebrew_installed_packages:
   - mkvtoolnix
   - mlx
   - nmap
-  - nvm
   - opencv
   - php
   - pipx
