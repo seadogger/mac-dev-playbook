@@ -41,9 +41,13 @@ and lingering-but-dead cask records; don't work around it, fix the config.
 ## Running it
 
 ```sh
-ansible-playbook main.yml --ask-become-pass       # full run; prompts for the macOS password
-ansible-playbook main.yml --tags homebrew         # just Homebrew formulae + casks (no sudo needed)
+ansible-playbook main.yml                         # full run; NO sudo — become defaults off (main.yml)
+ansible-playbook main.yml --tags homebrew         # just Homebrew formulae + casks
 ```
+
+Sudo is only for bare-Mac bootstrap (creating /opt/homebrew; CLT is moot since Xcode
+comes from the mas list) — see README step 7. Never add `--ask-become-pass` to routine
+runs; if a run demands become, a new genuinely-root task crept in and needs review.
 
 Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`, `shell-local`,
 `terminal`, `osx`, `extra-packages`, `vscode`, `post`.
