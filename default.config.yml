@@ -102,7 +102,6 @@ homebrew_installed_packages:
   - signal-cli
   - swiftformat
   - swiftgen
-  - tmux
   - uv
   - watchman
   - wget
