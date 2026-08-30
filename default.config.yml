@@ -97,12 +97,12 @@ homebrew_installed_packages:
   - pybind11
   - pyenv
   - python-tk@3.13
-  - rbenv
   - rclone
   - scipy
   - signal-cli
   - swiftformat
   - swiftgen
+  - tmux
   - uv
   - watchman
   - wget
