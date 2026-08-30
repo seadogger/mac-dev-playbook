@@ -116,6 +116,7 @@ homebrew_cask_apps:
   - codex
   - epic-games
   - ganttproject
+  - ghostty
   - google-chrome
   - google-drive
   - handbrake-app
