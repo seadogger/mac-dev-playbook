@@ -133,6 +133,7 @@ homebrew_cask_apps:
   - steam
   - tigervnc
   - visual-studio-code
+  - vlc
   - xquartz
   - zulu
 
@@ -145,7 +146,6 @@ homebrew_cask_apps:
 #  - microsoft-office    # Removed 2026-08.
 #  - minecraft           # Removed 2026-08; Homebrew record cleared.
 #  - vagrant
-#  - vlc
 #  - wireshark
 # Removed upstream / deprecated -- do not re-add as-is:
 #  - openemu-experimental  # No longer in Homebrew.
