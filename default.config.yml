@@ -88,6 +88,7 @@ homebrew_installed_packages:
   - mkvtoolnix
   - mlx
   - nmap
+  - node
   - opencv
   - php
   - pipx
@@ -111,6 +112,7 @@ homebrew_installed_packages:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - blender
   - claude
   - claude-code
   - codex
@@ -140,7 +142,6 @@ homebrew_cask_apps:
 # Not installed on this Mac. Uncomment to bring one back.
 #  - beyond-compare      # Removed 2026-08; Homebrew record cleared.
 #  - bitcoin-core
-#  - blender
 #  - displaylink
 #  - docker-desktop      # Renamed from `docker`.
 #  - microsoft-office    # Removed 2026-08.
