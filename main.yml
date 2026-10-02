@@ -43,16 +43,19 @@
     - role: geerlingguy.dotfiles
       when: configure_dotfiles
       tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
-      # ansible-core 2.21+ requires conditionals to resolve to a boolean, so
-      # these lists have to be length-checked rather than used for truthiness.
-      when: (mas_installed_apps | length > 0) or (mas_installed_app_ids | length > 0)
-      tags: ['mas']
     - role: geerlingguy.mac.dock
       when: configure_dock
       tags: ['dock']
 
   tasks:
+    # Replaces the geerlingguy.mac.mas role; see tasks/mas.yml. Runs here rather
+    # than in the roles' slot, so it now comes after the dock role.
+    - import_tasks: tasks/mas.yml
+      # ansible-core 2.21+ requires conditionals to resolve to a boolean, so
+      # the list has to be length-checked rather than used for truthiness.
+      when: mas_installed_apps | length > 0
+      tags: ['mas']
+
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
       tags: ['sudoers']

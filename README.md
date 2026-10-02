@@ -26,8 +26,7 @@ This playbook installs and configures my Mac for general use and software develo
 
   3. Install Ansible: `brew install ansible`
   4. Clone this repository to your local drive.
-  5. Sign in to the App Store (`mas` can no longer sign in for you, and the
-     `mas` tasks are skipped for anything not already purchased).
+  5. Sign in to the App Store (`mas` can no longer sign in for you).
   6. Install the required roles and collections:
 
      ```sh
@@ -51,12 +50,23 @@ This playbook installs and configures my Mac for general use and software develo
      (Headless fallback — no Xcode, CLT installed via `softwareupdate`, which is
      root-only: `ansible-playbook main.yml -e bootstrap=true --ask-become-pass`.)
 
-     **Already-provisioned machine (routine re-runs):** no sudo, ever — become
+     **Already-provisioned machine (routine re-runs):** no sudo — become
      defaults off and the formerly-privileged tasks verify state without root:
 
      ```sh
      ansible-playbook main.yml
      ```
+
+     The one exception: installing a Mac App Store app that isn't there yet.
+     `mas` 7 installs as root, so when `tasks/mas.yml` finds a missing app it
+     escalates just that task. Give it your password for that run:
+
+     ```sh
+     ansible-playbook main.yml --tags mas --ask-become-pass
+     ```
+
+     (Don't use `-e bootstrap=true` for this — it makes every task root, and
+     Homebrew refuses to run as root.)
 
 > Note: If some Homebrew commands fail, you may need to agree to Xcode's license
 > or fix another Brew issue. Run `brew doctor` to check.

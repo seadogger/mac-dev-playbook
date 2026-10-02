@@ -1,0 +1,38 @@
+# Install Mac App Store apps listed in `mas_installed_apps`.
+# Replaces the geerlingguy.mac.mas role: mas 7 needs root to install an app
+# (it re-runs itself under sudo), but the role gave it no way to prompt, and
+# `-e bootstrap=true` makes *every* task root, which Homebrew refuses. So only
+# the install step escalates, and only when an app is actually missing —
+# routine runs stay sudo-free. When one is missing, re-run with
+# `--ask-become-pass`.
+- name: Ensure mas is installed.
+  community.general.homebrew:
+    name: mas
+    state: present
+
+- name: Get installed Mac App Store apps.
+  command: "{{ mas_bin }} list"
+  register: mas_list
+  changed_when: false
+  check_mode: false
+
+- name: Find configured Mac App Store apps that are not installed.
+  set_fact:
+    mas_missing_apps: "{{ mas_installed_apps | rejectattr('id', 'in', mas_present_ids) | list }}"
+  vars:
+    mas_present_ids: "{{ mas_list.stdout_lines | map('split') | map('first') | map('int') | list }}"
+
+- name: Report Mac App Store apps to install.
+  debug:
+    msg: >-
+      Installing (needs sudo — re-run with --ask-become-pass if the next task
+      fails): {{ mas_missing_apps | map(attribute='name') | join(', ') }}
+  when: mas_missing_apps | length > 0
+
+- name: Install missing Mac App Store apps.
+  command:
+    argv: "{{ [mas_bin, 'install'] + (mas_missing_apps | map(attribute='id') | map('string') | list) }}"
+  vars:
+    # Task vars outrank the play-level `ansible_become: false` in main.yml.
+    ansible_become: true
+  when: mas_missing_apps | length > 0

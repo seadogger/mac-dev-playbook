@@ -46,8 +46,13 @@ ansible-playbook main.yml --tags homebrew         # just Homebrew formulae + cas
 ```
 
 Sudo is only for bare-Mac bootstrap (creating /opt/homebrew; CLT is moot since Xcode
-comes from the mas list) — see README step 7. Never add `--ask-become-pass` to routine
-runs; if a run demands become, a new genuinely-root task crept in and needs review.
+comes from the mas list) — see README step 7 — and for installing a Mac App Store
+app that isn't there yet: mas 7 installs as root, so `tasks/mas.yml` escalates that
+one task (task-level `ansible_become: true`) only when an app is missing. Such a run
+needs `ansible-playbook main.yml --tags mas --ask-become-pass`. Never use
+`-e bootstrap=true` for this — it makes every task root and Homebrew refuses root.
+Otherwise never add `--ask-become-pass` to routine runs; if a run demands become,
+a new genuinely-root task crept in and needs review.
 
 Available tags: `homebrew`, `dotfiles`, `mas`, `dock`, `sudoers`, `shell-local`,
 `terminal`, `osx`, `extra-packages`, `vscode`, `post`.
@@ -64,8 +69,9 @@ ansible-galaxy collection install -r requirements.yml
 
 ## Layout
 
-- `main.yml` — the playbook: roles (command-line-tools, homebrew, dotfiles, mas,
-  dock) then task imports (sudoers, shell-local, terminal, osx, extra-packages, vscode).
+- `main.yml` — the playbook: roles (command-line-tools, homebrew, dotfiles, dock)
+  then task imports (mas, sudoers, shell-local, terminal, osx, extra-packages, vscode).
+  `tasks/mas.yml` replaces the `geerlingguy.mac.mas` role.
 - `default.config.yml` — all variables and package lists (the source of truth).
 - `config.yml` — optional, **git-ignored** per-machine override; does not exist
   by default. `main.yml` includes it via a fileglob if present.

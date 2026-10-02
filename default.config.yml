@@ -156,7 +156,9 @@ homebrew_cask_apps:
 #  - chatbox               # Available, just not installed here.
 #  - chatgpt               # Available, just not installed here.
 
-# See `geerlingguy.mas` role documentation for usage instructions.
+# Installed by tasks/mas.yml. Installing a missing app needs root (mas 7), so a
+# run that has one to install needs `--ask-become-pass`; otherwise no sudo.
+mas_bin: /opt/homebrew/bin/mas
 # Note: you must be signed in to the App Store first; `mas` can no longer sign
 # in for you, so `mas_email`/`mas_password` are intentionally not set.
 mas_installed_apps:
