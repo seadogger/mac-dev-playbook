@@ -116,6 +116,7 @@ homebrew_cask_apps:
   - claude
   - claude-code
   - codex
+  - codex-app
   - epic-games
   - ganttproject
   - ghostty
