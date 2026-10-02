@@ -122,7 +122,6 @@ homebrew_cask_apps:
   - google-chrome
   - google-drive
   - handbrake-app
-  - makemkv
   - nextcloud
   - obs
   - obsidian
@@ -152,6 +151,7 @@ homebrew_cask_apps:
 #  - openemu-experimental  # No longer in Homebrew.
 #  - logitech-options      # Deprecated; use `logi-options-plus`.
 #  - papyrus               # Deprecated (fails Gatekeeper).
+#  - makemkv               # Disabled 2026-09-01 (fails Gatekeeper); installed manually from makemkv.com.
 #  - chatbox               # Available, just not installed here.
 #  - chatgpt               # Available, just not installed here.
 
@@ -162,16 +162,21 @@ mas_installed_apps:
   - { id: 905384638, name: "FileBot" }
   - { id: 561350520, name: "GoPro Quik" }
   - { id: 949582631, name: "HDHomeRun" }
-  - { id: 409183694, name: "Keynote" }
-  - { id: 405399194, name: "Kindle Classic" }
-  - { id: 409203825, name: "Numbers" }
+  - { id: 361285480, name: "Keynote" }
+  - { id: 302584613, name: "Kindle" }
+  - { id: 361304891, name: "Numbers" }
   - { id: 1037215068, name: "Observatory" }
-  - { id: 409201541, name: "Pages" }
+  - { id: 361309726, name: "Pages" }
   - { id: 463362050, name: "PhotoSweeper" }
   - { id: 899247664, name: "TestFlight" }
   - { id: 1463298887, name: "Userscripts" }
   - { id: 1451685025, name: "WireGuard" }
   - { id: 497799835, name: "Xcode" }
+# Removed 2026-10: old Mac App Store IDs retired ("No apps found"); replaced above.
+#  - { id: 409183694, name: "Keynote" }   # Now 361285480 (installs as "Keynote Creator Studio").
+#  - { id: 405399194, name: "Kindle Classic" }  # Discontinued by Amazon; now 302584613 "Amazon Kindle".
+#  - { id: 409203825, name: "Numbers" }   # Now 361304891 (installs as "Numbers Creator Studio").
+#  - { id: 409201541, name: "Pages" }     # Now 361309726 (installs as "Pages Creator Studio").
 
 # Not installed on this Mac. Uncomment to bring one back.
 #  - { id: 1091675654, name: "Shapr3D" }
