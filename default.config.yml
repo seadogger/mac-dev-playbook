@@ -84,6 +84,7 @@ homebrew_installed_packages:
   - kubernetes-cli
   - libftdi
   - libtensorflow
+  - llama.cpp
   - mas
   - mkvtoolnix
   - mlx
@@ -123,6 +124,7 @@ homebrew_cask_apps:
   - google-chrome
   - google-drive
   - handbrake-app
+  - lm-studio
   - nextcloud
   - obs
   - obsidian
