@@ -127,7 +127,6 @@ homebrew_cask_apps:
   - google-chrome
   - google-drive
   - handbrake-app
-  - lm-studio
   - logi-options+
   - nextcloud
   - obs
@@ -150,6 +149,7 @@ homebrew_cask_apps:
 #  - bitcoin-core
 #  - displaylink
 #  - docker-desktop      # Renamed from `docker`.
+#  - lm-studio           # Removed 2026-10; models left in ~/.lmstudio.
 #  - microsoft-office    # Removed 2026-08.
 #  - minecraft           # Removed 2026-08; Homebrew record cleared.
 #  - vagrant
