@@ -68,8 +68,10 @@ homebrew_installed_packages:
   - carthage
   - cask
   - cocoapods
+  - ddrescue
   - django-completion
   - doxygen
+  - e2fsprogs
   - gh
   - gifsicle
   - git
@@ -105,6 +107,7 @@ homebrew_installed_packages:
   - swiftformat
   - swiftgen
   - uv
+  - watch
   - watchman
   - wget
   - wimlib
@@ -125,6 +128,7 @@ homebrew_cask_apps:
   - google-drive
   - handbrake-app
   - lm-studio
+  - logi-options+
   - nextcloud
   - obs
   - obsidian
@@ -152,7 +156,7 @@ homebrew_cask_apps:
 #  - wireshark
 # Removed upstream / deprecated -- do not re-add as-is:
 #  - openemu-experimental  # No longer in Homebrew.
-#  - logitech-options      # Deprecated; use `logi-options-plus`.
+#  - logitech-options      # Deprecated; use `logi-options+` (listed above).
 #  - papyrus               # Deprecated (fails Gatekeeper).
 #  - makemkv               # Disabled 2026-09-01 (fails Gatekeeper); installed manually from makemkv.com.
 #  - chatbox               # Available, just not installed here.
