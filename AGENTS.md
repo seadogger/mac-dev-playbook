@@ -90,3 +90,17 @@ ansible-galaxy collection install -r requirements.yml
   holds an old personal fork; a different remote there makes the git module fail).
 - ansible-core 2.21+ requires `when:` conditionals to resolve to a real boolean,
   so list-driven gates use `| length > 0`, not bare truthiness.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues on seadogger/mac-dev-playbook (via `gh`). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
