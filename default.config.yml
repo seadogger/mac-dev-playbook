@@ -163,6 +163,7 @@ homebrew_cask_apps:
 #  - openemu-experimental  # No longer in Homebrew.
 #  - logitech-options      # Deprecated; use `logi-options+` (listed above).
 #  - papyrus               # Deprecated (fails Gatekeeper).
+#  - kstars                # Cask sha256 stale since upstream re-upload 2026-10-10; 3.8.5 installed manually 2026-11-16 (KDE-signed, notarized).
 #  - makemkv               # Disabled 2026-09-01 (fails Gatekeeper); installed manually from makemkv.com.
 #  - chatbox               # Available, just not installed here.
 #  - chatgpt               # Available, just not installed here.
