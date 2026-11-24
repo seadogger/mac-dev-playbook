@@ -132,6 +132,7 @@ homebrew_cask_apps:
   - ghostty
   - google-chrome
   - google-drive
+  - grok-build
   - handbrake-app
   - lm-studio
   - logi-options+
